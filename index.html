@@ -14,7 +14,7 @@
             align-items: center;
         }
         .card {
-            padding: 50px;
+            padding: 40px;
             background: white;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
@@ -22,28 +22,113 @@
         }
         h1 {
             color: #e91e63;
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
-        p {
-            font-size: 1.5em;
-            color: #333;
-            margin: 20px 0;
-        }
-        .hearts {
             font-size: 2.5em;
-            margin: 25px 0;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        .btn {
+            background: #e91e63;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+            background: #c2185b;
+        }
+        .hidden {
+            display: none;
+        }
+        .message {
+            background: #fff9c4;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
         }
     </style>
 </head>
 <body>
     <div class="card">
         <h1>🎉 ¡Feliz Cumpleaños Anheli! 🎂</h1>
-        <div class="hearts">💖 🌟 💖</div>
-        <p>Que todos tus sueños se hagan realidad</p>
-        <p>¡Que este día esté lleno de alegría y sorpresas!</p>
-        <p>Eres una persona increíble 💕</p>
-        <div class="hearts">🎈 🥳 🎁</div>
+        <p>Elige una sorpresa:</p>
+        
+        <div class="options">
+            <button class="btn" onclick="showMessage()">💌 Mensaje Especial</button>
+            <button class="btn" onclick="showPhotos()">📸 Galería</button>
+            <button class="btn" onclick="showGame()">🎮 Juego</button>
+            <button class="btn" onclick="showMusic()">🎵 Canción</button>
+            <button class="btn" onclick="showMemories()">📖 Recuerdos</button>
+            <button class="btn" onclick="showCake()">🎂 Velas</button>
+        </div>
+
+        <!-- SECCIONES OCULTAS -->
+        <div id="message" class="hidden message">
+            <h3>Para Anheli 💖</h3>
+            <p>Eres una persona increíble y mereces todo lo mejor en tu día especial. 
+               ¡Que todos tus sueños se hagan realidad! 🌟</p>
+        </div>
+
+        <div id="photos" class="hidden message">
+            <h3>📸 Galería de Recuerdos</h3>
+            <p>¡Aquí podrías agregar fotos de Anheli!</p>
+            <!-- Puedes agregar imágenes después -->
+        </div>
+
+        <div id="game" class="hidden message">
+            <h3>🎮 Encuentra el Regalo</h3>
+            <p>¡Haz clic en el regalo escondido!</p>
+            <button onclick="findGift()" style="font-size: 2em;">🎁</button>
+        </div>
     </div>
+
+    <script>
+        function showMessage() {
+            hideAll();
+            document.getElementById('message').style.display = 'block';
+        }
+
+        function showPhotos() {
+            hideAll();
+            document.getElementById('photos').style.display = 'block';
+        }
+
+        function showGame() {
+            hideAll();
+            document.getElementById('game').style.display = 'block';
+        }
+
+        function showMusic() {
+            hideAll();
+            alert("🎵 ¡Aquí iría la canción de cumpleaños feliz!");
+        }
+
+        function showMemories() {
+            hideAll();
+            alert("📖 ¡Libro de recuerdos por implementar!");
+        }
+
+        function showCake() {
+            hideAll();
+            alert("🎂 ¡Sopla las velas! 🕯️");
+        }
+
+        function hideAll() {
+            document.querySelectorAll('.message').forEach(el => {
+                el.style.display = 'none';
+            });
+        }
+
+        function findGift() {
+            alert("🎁 ¡Encontraste el regalo! ¡Felicidades!");
+        }
+    </script>
 </body>
 </html>
