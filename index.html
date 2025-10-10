@@ -19,6 +19,10 @@
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             max-width: 600px;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">💜</text></svg>');
+            background-size: 40px 40px;
+            background-position: 10px 10px, 10px 50px, 10px 90px;
+            background-repeat: repeat;
         }
         h1 {
             color: #e91e63;
@@ -52,6 +56,10 @@
             padding: 20px;
             border-radius: 10px;
             margin: 20px 0;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">💜</text></svg>');
+            background-size: 30px 30px;
+            background-repeat: repeat;
+            background-position: 5px 5px;
         }
         /* NUEVOS ESTILOS AGREGADOS */
         .memories-options {
@@ -70,6 +78,10 @@
             padding: 20px;
             border-radius: 10px;
             margin: 20px 0;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">💜</text></svg>');
+            background-size: 25px 25px;
+            background-repeat: repeat;
+            background-position: 3px 3px;
         }
         .back-btn {
             background: #7b1fa2;
@@ -80,11 +92,17 @@
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
+        .roses-decoration {
+            font-size: 1.5em;
+            margin: 10px 0;
+            color: #8B5FBF;
+        }
     </style>
 </head>
 <body>
     <div class="card">
         <h1>🎉 ¡Feliz Cumpleaños Anheli! 🎂</h1>
+        <div class="roses-decoration">💜 💜 💜</div>
         <p>Elige una sorpresa:</p>
         
         <div class="options">
@@ -99,6 +117,7 @@
         <!-- SECCIONES OCULTAS -->
         <div id="message" class="hidden message">
             <h3>💜 My Queen Anheli 💜</h3>
+            <div class="roses-decoration">💜 🌹 💜</div>
             <p style="text-align: left; line-height: 1.6; font-size: 1.1em;">
                 Eres muy valiosa para mí.<br>
                 Eres esa luz que guía mis pasos cuando todo se oscurece a mi alrededor.<br>
@@ -106,6 +125,7 @@
                 que la vida pueda darte. De verdad deseo que cada uno de tus sueños<br>
                 se haga realidad. 
             </p>
+            <div class="roses-decoration">💜 🌹 💜</div>
             <p style="text-align: center; font-size: 1.3em; margin-top: 20px; animation: pulse 1.5s infinite;">
                 🎆 Feliz Cumpleaños 🎇
             </p>
@@ -113,20 +133,25 @@
 
         <div id="photos" class="hidden message">
             <h3>📸 Galería de Recuerdos</h3>
+            <div class="roses-decoration">💜 🌹 💜</div>
             <p>¡Aquí podrías agregar fotos de Anheli!</p>
             <img src="IMG_20251004_160940.jpg" 
                  alt="Anheli" 
                  style="width: 300px; border-radius: 15px; margin: 20px;">
+            <div class="roses-decoration">💜 🌹 💜</div>
         </div>
 
         <div id="game" class="hidden message">
             <h3>🎮 Encuentra el Regalo</h3>
+            <div class="roses-decoration">💜 🌹 💜</div>
             <p>¡Haz clic en el regalo escondido!</p>
             <button onclick="findGift()" style="font-size: 2em;">🎁</button>
+            <div class="roses-decoration">💜 🌹 💜</div>
         </div>
 
         <div id="memories" class="hidden message">
             <h3>📖 Nuestros Recuerdos 💖</h3>
+            <div class="roses-decoration">💜 🌹 💜</div>
             <p>Elige un recuerdo especial:</p>
             
             <div class="memories-options">
@@ -165,60 +190,70 @@
             <!-- SUB-SECCIONES DE RECUERDOS -->
             <div id="memory1" class="memory-detail hidden">
                 <h4>💫 Nuestro Primer Encuentro</h4>
+                <div class="roses-decoration">💜</div>
                 <p>Recuerdo ese día como si fuera ayer... [tu descripción aquí]</p>
                 <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
             </div>
 
             <div id="memory2" class="memory-detail hidden">
                 <h4>🍳 Mi Primera Comida para Ti</h4>
+                <div class="roses-decoration">💜</div>
                 <p>Nervioso pero emocionado, preparé... [tu descripción aquí]</p>
                 <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
             </div>
 
             <div id="memory3" class="memory-detail hidden">
                 <h4>🏃 El Escape de Álgebra</h4>
+                <div class="roses-decoration">💜</div>
                 <p>Dejé la clase sin pensarlo dos veces... [tu descripción aquí]</p>
                 <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
             </div>
 
             <div id="memory4" class="memory-detail hidden">
                 <h4>📞 Tu Llamada Inesperada</h4>
+                <div class="roses-decoration">💜</div>
                 <p>Cuando escuché tu voz al otro lado... [tu descripción aquí]</p>
                 <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
             </div>
 
             <div id="memory5" class="memory-detail hidden">
                 <h4>🏖️ Noche en la Playa</h4>
+                <div class="roses-decoration">💜</div>
                 <p>Bajo las estrellas, con el sonido del mar... [tu descripción aquí]</p>
                 <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
             </div>
 
             <div id="memory6" class="memory-detail hidden">
                 <h4>🎥 Tu Video de Despedida</h4>
+                <div class="roses-decoration">💜</div>
                 <p>Ese video que me llegó al alma... [tu descripción aquí]</p>
                 <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
             </div>
 
             <div id="memory7" class="memory-detail hidden">
                 <h4>💤 Los 3 Días de Espera</h4>
+                <div class="roses-decoration">💜</div>
                 <p>Esos tres días que se hicieron eternos... [tu descripción aquí]</p>
                 <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
             </div>
 
             <div id="memory8" class="memory-detail hidden">
                 <h4>🌅 Año Nuevo Juntos</h4>
+                <div class="roses-decoration">💜</div>
                 <p>Hablando hasta que el sol salió... [tu descripción aquí]</p>
                 <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
             </div>
 
             <div id="memory9" class="memory-detail hidden">
                 <h4>⏰ Tarde a Administración</h4>
+                <div class="roses-decoration">💜</div>
                 <p>Esa vez que llegamos tarde y... [tu descripción aquí]</p>
                 <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
             </div>
 
             <div id="memory10" class="memory-detail hidden">
                 <h4>💌 Mi Confesión</h4>
+                <div class="roses-decoration">💜</div>
                 <p>El momento en que por fin te dije... [tu descripción aquí]</p>
                 <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
             </div>
