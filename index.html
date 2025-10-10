@@ -53,6 +53,33 @@
             border-radius: 10px;
             margin: 20px 0;
         }
+        /* NUEVOS ESTILOS AGREGADOS */
+        .memories-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .memory-btn {
+            background: #9c27b0;
+            font-size: 1em;
+            padding: 12px;
+        }
+        .memory-detail {
+            background: #f3e5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .back-btn {
+            background: #7b1fa2;
+            margin-top: 15px;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
     </style>
 </head>
 <body>
@@ -71,25 +98,25 @@
 
         <!-- SECCIONES OCULTAS -->
         <div id="message" class="hidden message">
-    <h3>💜 My Queen Anheli 💜</h3>
-    <p style="text-align: left; line-height: 1.6; font-size: 1.1em;">
-        Eres muy valiosa para mí.<br>
-        Eres esa luz que guía mis pasos cuando todo se oscurece a mi alrededor.<br>
-        Hoy, en tu día especial, quiero que sepas que mereces todo lo bueno y lo mejor<br>
-        que la vida pueda darte. De verdad deseo que cada uno de tus sueños<br>
-        se haga realidad. 
-    </p>
+            <h3>💜 My Queen Anheli 💜</h3>
+            <p style="text-align: left; line-height: 1.6; font-size: 1.1em;">
+                Eres muy valiosa para mí.<br>
+                Eres esa luz que guía mis pasos cuando todo se oscurece a mi alrededor.<br>
+                Hoy, en tu día especial, quiero que sepas que mereces todo lo bueno y lo mejor<br>
+                que la vida pueda darte. De verdad deseo que cada uno de tus sueños<br>
+                se haga realidad. 
+            </p>
             <p style="text-align: center; font-size: 1.3em; margin-top: 20px; animation: pulse 1.5s infinite;">
-    🎆 Feliz Cumpleaños 🎇
-</p>
-</div>
+                🎆 Feliz Cumpleaños 🎇
+            </p>
+        </div>
 
         <div id="photos" class="hidden message">
             <h3>📸 Galería de Recuerdos</h3>
             <p>¡Aquí podrías agregar fotos de Anheli!</p>
             <img src="IMG_20251004_160940.jpg" 
-     alt="Anheli" 
-     style="width: 300px; border-radius: 15px; margin: 20px;">
+                 alt="Anheli" 
+                 style="width: 300px; border-radius: 15px; margin: 20px;">
         </div>
 
         <div id="game" class="hidden message">
@@ -97,105 +124,106 @@
             <p>¡Haz clic en el regalo escondido!</p>
             <button onclick="findGift()" style="font-size: 2em;">🎁</button>
         </div>
-    </div>
-<div id="memories" class="hidden message">
-    <h3>📖 Nuestros Recuerdos 💖</h3>
-    <p>Elige un recuerdo especial:</p>
-    
-    <div class="memories-options">
-        <button class="btn memory-btn" onclick="showMemory('memory1')">
-            💫 Cómo nos conocimos
-        </button>
-        <button class="btn memory-btn" onclick="showMemory('memory2')">
-            🍳 La primera vez que cociné para ti
-        </button>
-        <button class="btn memory-btn" onclick="showMemory('memory3')">
-            🏃 Salir de álgebra para recogerte
-        </button>
-        <button class="btn memory-btn" onclick="showMemory('memory4')">
-            📞 Cuando me llamaste
-        </button>
-        <button class="btn memory-btn" onclick="showMemory('memory5')">
-            🏖️ Tomando en la playa
-        </button>
-        <button class="btn memory-btn" onclick="showMemory('memory6')">
-            🎥 Tu video de despedida
-        </button>
-        <button class="btn memory-btn" onclick="showMemory('memory7')">
-            💤 Los 3 días sin respuesta
-        </button>
-        <button class="btn memory-btn" onclick="showMemory('memory8')">
-            🌅 Año nuevo hasta el amanecer
-        </button>
-        <button class="btn memory-btn" onclick="showMemory('memory9')">
-            ⏰ Llegamos tarde a Administración
-        </button>
-        <button class="btn memory-btn" onclick="showMemory('memory10')">
-            💌 Cuando te dije "me gustas"
-        </button>
-    </div>
 
-    <!-- SUB-SECCIONES DE RECUERDOS -->
-    <div id="memory1" class="memory-detail hidden">
-        <h4>💫 Nuestro Primer Encuentro</h4>
-        <p>Recuerdo ese día como si fuera ayer... [tu descripción aquí]</p>
-        <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
-    </div>
+        <div id="memories" class="hidden message">
+            <h3>📖 Nuestros Recuerdos 💖</h3>
+            <p>Elige un recuerdo especial:</p>
+            
+            <div class="memories-options">
+                <button class="btn memory-btn" onclick="showMemory('memory1')">
+                    💫 Cómo nos conocimos
+                </button>
+                <button class="btn memory-btn" onclick="showMemory('memory2')">
+                    🍳 La primera vez que cociné para ti
+                </button>
+                <button class="btn memory-btn" onclick="showMemory('memory3')">
+                    🏃 Salir de álgebra para recogerte
+                </button>
+                <button class="btn memory-btn" onclick="showMemory('memory4')">
+                    📞 Cuando me llamaste
+                </button>
+                <button class="btn memory-btn" onclick="showMemory('memory5')">
+                    🏖️ Tomando en la playa
+                </button>
+                <button class="btn memory-btn" onclick="showMemory('memory6')">
+                    🎥 Tu video de despedida
+                </button>
+                <button class="btn memory-btn" onclick="showMemory('memory7')">
+                    💤 Los 3 días sin respuesta
+                </button>
+                <button class="btn memory-btn" onclick="showMemory('memory8')">
+                    🌅 Año nuevo hasta el amanecer
+                </button>
+                <button class="btn memory-btn" onclick="showMemory('memory9')">
+                    ⏰ Llegamos tarde a Administración
+                </button>
+                <button class="btn memory-btn" onclick="showMemory('memory10')">
+                    💌 Cuando te dije "me gustas"
+                </button>
+            </div>
 
-    <div id="memory2" class="memory-detail hidden">
-        <h4>🍳 Mi Primera Comida para Ti</h4>
-        <p>Nervioso pero emocionado, preparé... [tu descripción aquí]</p>
-        <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
-    </div>
+            <!-- SUB-SECCIONES DE RECUERDOS -->
+            <div id="memory1" class="memory-detail hidden">
+                <h4>💫 Nuestro Primer Encuentro</h4>
+                <p>Recuerdo ese día como si fuera ayer... [tu descripción aquí]</p>
+                <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
+            </div>
 
-    <div id="memory3" class="memory-detail hidden">
-        <h4>🏃 El Escape de Álgebra</h4>
-        <p>Dejé la clase sin pensarlo dos veces... [tu descripción aquí]</p>
-        <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
-    </div>
+            <div id="memory2" class="memory-detail hidden">
+                <h4>🍳 Mi Primera Comida para Ti</h4>
+                <p>Nervioso pero emocionado, preparé... [tu descripción aquí]</p>
+                <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
+            </div>
 
-    <div id="memory4" class="memory-detail hidden">
-        <h4>📞 Tu Llamada Inesperada</h4>
-        <p>Cuando escuché tu voz al otro lado... [tu descripción aquí]</p>
-        <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
-    </div>
+            <div id="memory3" class="memory-detail hidden">
+                <h4>🏃 El Escape de Álgebra</h4>
+                <p>Dejé la clase sin pensarlo dos veces... [tu descripción aquí]</p>
+                <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
+            </div>
 
-    <div id="memory5" class="memory-detail hidden">
-        <h4>🏖️ Noche en la Playa</h4>
-        <p>Bajo las estrellas, con el sonido del mar... [tu descripción aquí]</p>
-        <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
-    </div>
+            <div id="memory4" class="memory-detail hidden">
+                <h4>📞 Tu Llamada Inesperada</h4>
+                <p>Cuando escuché tu voz al otro lado... [tu descripción aquí]</p>
+                <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
+            </div>
 
-    <div id="memory6" class="memory-detail hidden">
-        <h4>🎥 Tu Video de Despedida</h4>
-        <p>Ese video que me llegó al alma... [tu descripción aquí]</p>
-        <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
-    </div>
+            <div id="memory5" class="memory-detail hidden">
+                <h4>🏖️ Noche en la Playa</h4>
+                <p>Bajo las estrellas, con el sonido del mar... [tu descripción aquí]</p>
+                <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
+            </div>
 
-    <div id="memory7" class="memory-detail hidden">
-        <h4>💤 Los 3 Días de Espera</h4>
-        <p>Esos tres días que se hicieron eternos... [tu descripción aquí]</p>
-        <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
-    </div>
+            <div id="memory6" class="memory-detail hidden">
+                <h4>🎥 Tu Video de Despedida</h4>
+                <p>Ese video que me llegó al alma... [tu descripción aquí]</p>
+                <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
+            </div>
 
-    <div id="memory8" class="memory-detail hidden">
-        <h4>🌅 Año Nuevo Juntos</h4>
-        <p>Hablando hasta que el sol salió... [tu descripción aquí]</p>
-        <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
-    </div>
+            <div id="memory7" class="memory-detail hidden">
+                <h4>💤 Los 3 Días de Espera</h4>
+                <p>Esos tres días que se hicieron eternos... [tu descripción aquí]</p>
+                <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
+            </div>
 
-    <div id="memory9" class="memory-detail hidden">
-        <h4>⏰ Tarde a Administración</h4>
-        <p>Esa vez que llegamos tarde y... [tu descripción aquí]</p>
-        <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
-    </div>
+            <div id="memory8" class="memory-detail hidden">
+                <h4>🌅 Año Nuevo Juntos</h4>
+                <p>Hablando hasta que el sol salió... [tu descripción aquí]</p>
+                <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
+            </div>
 
-    <div id="memory10" class="memory-detail hidden">
-        <h4>💌 Mi Confesión</h4>
-        <p>El momento en que por fin te dije... [tu descripción aquí]</p>
-        <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
+            <div id="memory9" class="memory-detail hidden">
+                <h4>⏰ Tarde a Administración</h4>
+                <p>Esa vez que llegamos tarde y... [tu descripción aquí]</p>
+                <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
+            </div>
+
+            <div id="memory10" class="memory-detail hidden">
+                <h4>💌 Mi Confesión</h4>
+                <p>El momento en que por fin te dije... [tu descripción aquí]</p>
+                <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
+            </div>
+        </div>
     </div>
-</div>
 
     <script>
         function showMessage() {
@@ -220,7 +248,7 @@
 
         function showMemories() {
             hideAll();
-            alert("📖 ¡Libro de recuerdos por implementar!");
+            document.getElementById('memories').style.display = 'block';
         }
 
         function showCake() {
@@ -236,6 +264,19 @@
 
         function findGift() {
             alert("🎁 ¡Encontraste el regalo! ¡Felicidades!");
+        }
+
+        // NUEVAS FUNCIONES PARA RECUERDOS
+        function showMemory(memoryId) {
+            document.querySelector('.memories-options').style.display = 'none';
+            document.getElementById(memoryId).style.display = 'block';
+        }
+
+        function backToMemories() {
+            document.querySelectorAll('.memory-detail').forEach(el => {
+                el.style.display = 'none';
+            });
+            document.querySelector('.memories-options').style.display = 'grid';
         }
     </script>
 </body>
