@@ -266,6 +266,17 @@
                 font-size: 1em;
             }
         }
+
+        /* Contador de cumpleaños */
+        .birthday-count {
+            background: linear-gradient(135deg, #FF6B6B, #FFE66D);
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            font-weight: bold;
+            color: #374151;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
     </style>
 </head>
 <body>
@@ -278,7 +289,8 @@
     <div class="card">
         <div class="card-header">
             <h1>🎉 ¡Feliz Cumpleaños Anheli! 🎂</h1>
-            <div class="subtitle">Tu día especial merece algo extraordinario</div>
+            <div class="subtitle">31 de Octubre - Tu día especial</div>
+            <div class="birthday-count" id="birthdayCounter"></div>
             <div style="font-size: 1.3em; margin: 12px 0;">✨ 🌟 ✨</div>
         </div>
         
@@ -358,108 +370,136 @@
                 <button class="btn memory-btn" onclick="showMemory('memory2')">🍳 Primera comida para ti</button>
                 <button class="btn memory-btn" onclick="showMemory('memory3')">🏃 Escape de álgebra</button>
                 <button class="btn memory-btn" onclick="showMemory('memory4')">📞 Tu llamada</button>
-                <button class="btn memory-btn" onclick="showMemory('memory5')">🏖️ Noche en playa</button>
+                <button class="btn memory-btn" onclick="showMemory('memory5')">⚡ Día de pelea</button>
+                <button class="btn memory-btn" onclick="showMemory('memory6')">🎥 Video despedida</button>
+                <button class="btn memory-btn" onclick="showMemory('memory7')">💜 Lo más valioso</button>
+                <button class="btn memory-btn" onclick="showMemory('memory8')">🎁 15 de enero</button>
+                <button class="btn memory-btn" onclick="showMemory('memory9')">⏰ Tarde a Admin</button>
                 <button class="btn memory-btn" onclick="showMemory('memory10')">💌 Te dije "me gustas"</button>
             </div>
 
             <!-- Sub-secciones de recuerdos -->
             <div id="memory1" class="memory-detail hidden">
-    <h4 style="color: #5E35B1; font-size: 1.1em;">💫 Cómo nos conocimos</h4>
-    <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
-        <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
-            Desde que escuché tu voz te quería conocer. Gracias al curso de desempeño, hemos sido algo más cercanos, pero lo que más recuerdo fue cuando en el colectivo nos encontramos y te di una palmada en tu frente. Es mi forma de querer, con eso te dije: "Me alegro de verte aquí, qué coincidencia, estoy feliz". Y también por primera vez nos sentamos juntos el día de tu cumpleaños. Creo que fue destino jijiji.
-        </p>
-    </div>
-    <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
-</div>
+                <h4 style="color: #5E35B1; font-size: 1.1em;">💫 Cómo nos conocimos</h4>
+                <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
+                    <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
+                        Desde que escuché tu voz te quería conocer. Gracias al curso de desempeño, hemos sido algo más cercanos, pero lo que más recuerdo fue cuando en el colectivo nos encontramos y te di una palmada en tu frente. Es mi forma de querer, con eso te dije: "Me alegro de verte aquí, qué coincidencia, estoy feliz". Y también por primera vez nos sentamos juntos el día de tu cumpleaños. Creo que fue destino jijiji.
+                    </p>
+                </div>
+                <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
+            </div>
 
             <div id="memory2" class="memory-detail hidden">
-    <h4 style="color: #5E35B1; font-size: 1.1em;">🍳 La primera vez que cociné para ti</h4>
-    <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
-        <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
-            Ese día cuando cociné para ti, te quería hacer cocinar a ti, pero dije mejor yo cocino y te sorprendo. Pero al final el arroz salió un poco duro y el pollo también medio crudo. Creo que me ganaron los nervios, pero en fin lo comiste, creo que estabas de hambre, jijij.
-        </p>
-    </div>
-    <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
-</div>
+                <h4 style="color: #5E35B1; font-size: 1.1em;">🍳 La primera vez que cociné para ti</h4>
+                <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
+                    <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
+                        Ese día cuando cociné para ti, te quería hacer cocinar a ti, pero dije mejor yo cocino y te sorprendo. Pero al final el arroz salió un poco duro y el pollo también medio crudo. Creo que me ganaron los nervios, pero en fin lo comiste, creo que estabas de hambre, jijij.
+                    </p>
+                </div>
+                <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
+            </div>
 
             <div id="memory3" class="memory-detail hidden">
-    <h4 style="color: #5E35B1; font-size: 1.1em;">🏃 Salir de álgebra para recogerte</h4>
-    <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
-        <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
-            Cuando ese día llegaste tarde a la clase de álgebra, me pediste que saliera a recogerte. La verdad no lo quería hacer, estaba luchando conmigo mismo, pero al final creo que mi corazón ganó a mi mente. Ese día sí salí a recogerte, sabía que iba a marcar la historia de mi vida. Y creo que desde ese día algunos de nuestros compañeros me miraron mal, pero desde ese día nos hemos vuelto más cercanos.
-        </p>
-    </div>
-    <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
-</div>
+                <h4 style="color: #5E35B1; font-size: 1.1em;">🏃 Salir de álgebra para recogerte</h4>
+                <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
+                    <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
+                        Cuando ese día llegaste tarde a la clase de álgebra, me pediste que saliera a recogerte. La verdad no lo quería hacer, estaba luchando conmigo mismo, pero al final creo que mi corazón ganó a mi mente. Ese día sí salí a recogerte, sabía que iba a marcar la historia de mi vida. Y creo que desde ese día algunos de nuestros compañeros me miraron mal, pero desde ese día nos hemos vuelto más cercanos.
+                    </p>
+                </div>
+                <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
+            </div>
 
             <div id="memory4" class="memory-detail hidden">
-    <h4 style="color: #5E35B1; font-size: 1.1em;">📞 Cuando me llamaste</h4>
-    <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
-        <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
-            Muchas veces siempre me llamabas y me decías: "Quiero hablar contigo, no sé qué tienes, pero quiero hablar contigo". Desde esa vez siempre hablábamos, pero más recuerdo fue cuando nos quedamos hablando en el año nuevo. Fue bueno hablar esa mañana contigo.
-        </p>
-    </div>
-    <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
-</div>
+                <h4 style="color: #5E35B1; font-size: 1.1em;">📞 Cuando me llamaste</h4>
+                <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
+                    <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
+                        Muchas veces siempre me llamabas y me decías: "Quiero hablar contigo, no sé qué tienes, pero quiero hablar contigo". Desde esa vez siempre hablábamos, pero más recuerdo fue cuando nos quedamos hablando en el año nuevo. Fue bueno hablar esa mañana contigo.
+                    </p>
+                </div>
+                <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
+            </div>
 
             <div id="memory5" class="memory-detail hidden">
-    <h4 style="color: #5E35B1; font-size: 1.1em;">⚡ El día de pelea</h4>
-    <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
-        <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
-            Ese día hubo un malentendido y también por parte mía tuve la culpa. Tú también estabas rara, pero ese día fue incómodo para mí y estaba dolido, y en un rato me cambiaste. Pero al final hemos superado esa barrera, más fue una pequeña pelea, pero gracias a ello hemos entrado en más confianza creo.
-        </p>
-    </div>
-    <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
-</div>
+                <h4 style="color: #5E35B1; font-size: 1.1em;">⚡ El día de pelea</h4>
+                <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
+                    <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
+                        Ese día hubo un malentendido y también por parte mía tuve la culpa. Tú también estabas rara, pero ese día fue incómodo para mí y estaba dolido, y en un rato me cambiaste. Pero al final hemos superado esa barrera, más fue una pequeña pelea, pero gracias a ello hemos entrado en más confianza creo.
+                    </p>
+                </div>
+                <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
+            </div>
+
             <div id="memory6" class="memory-detail hidden">
-    <h4 style="color: #5E35B1; font-size: 1.1em;">🎥 Tu video de despedida</h4>
-    <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
-        <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
-            Me sorprendió cuando me dijiste: "Me quiero despedir formalmente de ti". Yo pensé que me llevarías a un disco o algo así, pero me gustaron más los videos que me compartiste, fueron muy buenos. No sé si me estabas considerando tu amigo o me estabas tratando de enamorar jiji, pero bueno, fueron buenos recuerdos.
-        </p>
-    </div>
-    <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
-</div>
+                <h4 style="color: #5E35B1; font-size: 1.1em;">🎥 Tu video de despedida</h4>
+                <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
+                    <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
+                        Me sorprendió cuando me dijiste: "Me quiero despedir formalmente de ti". Yo pensé que me llevarías a un disco o algo así, pero me gustaron más los videos que me compartiste, fueron muy buenos. No sé si me estabas considerando tu amigo o me estabas tratando de enamorar jiji, pero bueno, fueron buenos recuerdos.
+                    </p>
+                </div>
+                <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
+            </div>
+
             <div id="memory7" class="memory-detail hidden">
-    <h4 style="color: #5E35B1; font-size: 1.1em;">💜 Lo más valioso para mí</h4>
-    <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
-        <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
-            Cuando una vez no me respondiste, me preocupé demasiado. No quería insistir, diciendo tal vez hice algo y se molestó, pero en fin me escribiste después de varios días. Cuando me respondiste, me llené de alegría, así pasé mi verano.
-        </p>
-    </div>
-    <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
-</div>
+                <h4 style="color: #5E35B1; font-size: 1.1em;">💜 Lo más valioso para mí</h4>
+                <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
+                    <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
+                        Cuando una vez no me respondiste, me preocupé demasiado. No quería insistir, diciendo tal vez hice algo y se molestó, pero en fin me escribiste después de varios días. Cuando me respondiste, me llené de alegría, así pasé mi verano.
+                    </p>
+                </div>
+                <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
+            </div>
+
             <div id="memory8" class="memory-detail hidden">
-    <h4 style="color: #5E35B1; font-size: 1.1em;">🎁 El 15 de enero</h4>
-    <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
-        <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
-            El 15 de enero me sorprendiste demasiado. Ese día estaba tomando porque sabía que nadie iba a darme algún detalle, además sabía que iban a hacer llamada por Teams, pero no creí que se anticiparían. Pero ese día me sorprendiste demasiado, ese día marcó un gran día para mí. La verdad me gustó mucho la tarjeta que hiciste para mí, de tanta emoción lo subí a mi estado.
-        </p>
-    </div>
-    <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
-</div>
+                <h4 style="color: #5E35B1; font-size: 1.1em;">🎁 El 15 de enero</h4>
+                <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
+                    <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
+                        El 15 de enero me sorprendiste demasiado. Ese día estaba tomando porque sabía que nadie iba a darme algún detalle, además sabía que iban a hacer llamada por Teams, pero no creí que se anticiparían. Pero ese día me sorprendiste demasiado, ese día marcó un gran día para mí. La verdad me gustó mucho la tarjeta que hiciste para mí, de tanta emoción lo subí a mi estado.
+                    </p>
+                </div>
+                <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
+            </div>
+
             <div id="memory9" class="memory-detail hidden">
-    <h4 style="color: #5E35B1; font-size: 1.1em;">⏰ Llegamos tarde a Administración</h4>
-    <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
-        <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
-            ¿Te acuerdas ese día cuando a propósito llegamos tarde a Administración? No quería perder mi racha de puntualidad, pero ese día la rompí jiji. Pero al final creo que fue bueno, no me arrepiento de haber llegado tarde.
-        </p>
-    </div>
-    <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
-</div>
+                <h4 style="color: #5E35B1; font-size: 1.1em;">⏰ Llegamos tarde a Administración</h4>
+                <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
+                    <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
+                        ¿Te acuerdas ese día cuando a propósito llegamos tarde a Administración? No quería perder mi racha de puntualidad, pero ese día la rompí jiji. Pero al final creo que fue bueno, no me arrepiento de haber llegado tarde.
+                    </p>
+                </div>
+                <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
+            </div>
 
             <div id="memory10" class="memory-detail hidden">
-    <h4 style="color: #5E35B1; font-size: 1.1em;">💌 Cuando te dije "me gustas"</h4>
-    <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
-        <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
-            Ese día no sabía cómo empezar, además creo que ya era hora de decir lo que sentía por ti. La verdad siempre estaba enamorado de ti, creo que por eso a veces me molestaba sin alguna razón, creo que fueron los celos jijij. Tal vez no te dije antes nada porque te quería conocer un poco más. La verdad creo que soy nuevo en esto y tengo miedo de salir lastimado. Te amo demasiado, y también por eso siempre me preocupaba por ti, aunque creo que no lo hacía notar, pero eres mi mundo.
-        </p>
+                <h4 style="color: #5E35B1; font-size: 1.1em;">💌 Cuando te dije "me gustas"</h4>
+                <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
+                    <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
+                        Ese día no sabía cómo empezar, además creo que ya era hora de decir lo que sentía por ti. La verdad siempre estaba enamorado de ti, creo que por eso a veces me molestaba sin alguna razón, creo que fueron los celos jijij. Tal vez no te dije antes nada porque te quería conocer un poco más. La verdad creo que soy nuevo en esto y tengo miedo de salir lastimado. Te amo demasiado, y también por eso siempre me preocupaba por ti, aunque creo que no lo hacía notar, pero eres mi mundo.
+                    </p>
+                </div>
+                <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
+            </div>
+        </div>
     </div>
-    <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
-</div>
 
     <script>
+        // Contador de cumpleaños
+        function updateBirthdayCounter() {
+            const now = new Date();
+            const birthday = new Date(now.getFullYear(), 9, 31); // Octubre es mes 9 (0-indexed)
+            const counter = document.getElementById('birthdayCounter');
+            
+            if (now.getMonth() === 9 && now.getDate() === 31) {
+                counter.innerHTML = "🎉 ¡HOY ES TU DÍA ESPECIAL! 🎂";
+            } else {
+                if (now > birthday) {
+                    birthday.setFullYear(birthday.getFullYear() + 1);
+                }
+                const diffTime = birthday - now;
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                counter.innerHTML = `Faltan ${diffDays} días para tu cumpleaños ✨`;
+            }
+        }
+
         // Funciones de navegación
         function showMessage() {
             hideAll();
@@ -493,7 +533,7 @@
 
         function showCake() {
             hideAll();
-            alert("🎂 ¡Sopla las velas y pide un deseo! 🕯️✨");
+            alert("🎂 ¡Sopla las velas y pide un deseo! 🕯️✨\n¡Que todos tus sueños se hagan realidad! 💖");
         }
 
         function hideAll() {
@@ -543,6 +583,11 @@
             }
             giftsFound = 0;
         }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', function() {
+            updateBirthdayCounter();
+        });
     </script>
 </body>
 </html>
