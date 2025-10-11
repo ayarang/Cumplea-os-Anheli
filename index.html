@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>¡Feliz Cumpleaños Anheli!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         * {
             margin: 0;
@@ -19,122 +20,109 @@
             justify-content: center;
             align-items: center;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
+            padding: 20px;
         }
 
-        /* Fondo animado de partículas */
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .particle {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 50%;
-            animation: float 8s infinite ease-in-out;
-        }
-
-        /* Rosas moradas animadas */
+        /* Rosas moradas optimizadas para móvil */
         .rose {
             position: absolute;
-            font-size: 2.5em;
+            font-size: 1.8em;
             z-index: 2;
             animation: floatRose 6s infinite ease-in-out;
-            filter: drop-shadow(0 0 10px rgba(147, 51, 234, 0.6));
+            display: none; /* Ocultas en móvil por defecto */
         }
 
-        .rose:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
-        .rose:nth-child(2) { top: 15%; right: 8%; animation-delay: 1s; }
-        .rose:nth-child(3) { bottom: 20%; left: 10%; animation-delay: 2s; }
-        .rose:nth-child(4) { bottom: 15%; right: 5%; animation-delay: 3s; }
-        .rose:nth-child(5) { top: 30%; left: 15%; animation-delay: 4s; }
-        .rose:nth-child(6) { bottom: 30%; right: 15%; animation-delay: 5s; }
+        /* Mostrar rosas solo en pantallas grandes */
+        @media (min-width: 768px) {
+            .rose {
+                display: block;
+                font-size: 2.2em;
+            }
+            .rose:nth-child(1) { top: 10%; left: 5%; }
+            .rose:nth-child(2) { top: 15%; right: 8%; }
+            .rose:nth-child(3) { bottom: 20%; left: 10%; }
+            .rose:nth-child(4) { bottom: 15%; right: 5%; }
+        }
 
-        /* Tarjeta principal */
+        /* Tarjeta principal responsive */
         .card {
-            padding: 50px 40px;
+            padding: 30px 20px;
             background: rgba(255, 255, 255, 0.95);
-            border-radius: 25px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 700px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
             position: relative;
             z-index: 3;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transform-style: preserve-3d;
-            perspective: 1000px;
+            margin: 10px;
         }
 
-        .card-header {
-            margin-bottom: 30px;
-        }
-
+        /* Título responsive */
         h1 {
             color: #8B5CF6;
-            font-size: 3em;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 2em;
+            margin-bottom: 10px;
             background: linear-gradient(45deg, #8B5CF6, #EC4899);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: titleGlow 2s ease-in-out infinite alternate;
         }
 
-        .subtitle {
-            color: #6B7280;
-            font-size: 1.3em;
-            margin-bottom: 10px;
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            .card {
+                padding: 40px 30px;
+                max-width: 600px;
+            }
         }
 
-        /* Grid de opciones mejorado */
+        /* Grid de opciones responsive */
         .options {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin: 40px 0;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin: 25px 0;
         }
 
+        @media (min-width: 480px) {
+            .options {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+        }
+
+        /* Botones optimizados */
         .btn {
             background: linear-gradient(135deg, #8B5CF6, #EC4899);
             color: white;
             border: none;
-            padding: 20px;
-            border-radius: 15px;
-            font-size: 1.2em;
+            padding: 15px 12px;
+            border-radius: 12px;
+            font-size: 1em;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.3);
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .btn:hover::before {
-            left: 100%;
+        @media (min-width: 768px) {
+            .btn {
+                padding: 18px 15px;
+                font-size: 1.1em;
+                min-height: 70px;
+            }
         }
 
         .btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(139, 92, 246, 0.5);
-        }
-
-        .btn:active {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
         }
 
         /* Secciones de contenido */
@@ -144,48 +132,106 @@
 
         .message {
             background: linear-gradient(135deg, #FFF9C4, #FFEB3B);
-            padding: 30px;
-            border-radius: 20px;
-            margin: 25px 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-left: 5px solid #8B5CF6;
-            animation: slideIn 0.5s ease-out;
-        }
-
-        .memory-section {
-            background: linear-gradient(135deg, #E8EAF6, #C5CAE9);
-            padding: 25px;
-            border-radius: 20px;
+            padding: 20px;
+            border-radius: 15px;
             margin: 20px 0;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-left: 4px solid #8B5CF6;
         }
 
-        /* Animaciones */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
+        /* Galería responsive */
+        .photo-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
         }
 
+        .photo-frame {
+            width: 120px;
+            height: 120px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        @media (min-width: 768px) {
+            .photo-frame {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        /* Juego responsive */
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .game-btn {
+            font-size: 2em;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 10px;
+            transition: transform 0.2s;
+        }
+
+        .game-btn:hover {
+            transform: scale(1.1);
+            background: rgba(139, 92, 246, 0.1);
+        }
+
+        /* Recuerdos responsive */
+        .memories-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .memory-btn {
+            background: linear-gradient(135deg, #7E57C2, #5E35B1);
+            font-size: 0.95em;
+            padding: 14px 10px;
+            min-height: 55px;
+        }
+
+        .memory-detail {
+            background: linear-gradient(135deg, #F3E5F5, #E1BEE7);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border-left: 4px solid #7E57C2;
+        }
+
+        .back-btn {
+            background: linear-gradient(135deg, #5E35B1, #4527A0);
+            margin-top: 15px;
+            padding: 12px 20px;
+        }
+
+        /* Animaciones optimizadas */
         @keyframes floatRose {
             0%, 100% { 
                 transform: translateY(0px) rotate(0deg) scale(1);
-                filter: drop-shadow(0 0 10px rgba(147, 51, 234, 0.6));
             }
             50% { 
-                transform: translateY(-25px) rotate(10deg) scale(1.1);
-                filter: drop-shadow(0 0 20px rgba(147, 51, 234, 0.8));
+                transform: translateY(-15px) rotate(5deg) scale(1.05);
             }
-        }
-
-        @keyframes titleGlow {
-            0% { text-shadow: 2px 2px 4px rgba(139, 92, 246, 0.3); }
-            100% { text-shadow: 2px 2px 20px rgba(139, 92, 246, 0.6); }
         }
 
         @keyframes slideIn {
             from { 
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             to { 
                 opacity: 1;
@@ -193,84 +239,37 @@
             }
         }
 
-        /* Estilos para recuerdos */
-        .memories-options {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            margin: 25px 0;
-        }
-
-        .memory-btn {
-            background: linear-gradient(135deg, #7E57C2, #5E35B1);
+        /* Texto responsive */
+        .subtitle {
+            color: #6B7280;
             font-size: 1.1em;
-            padding: 18px;
+            margin-bottom: 8px;
         }
 
-        .memory-detail {
-            background: linear-gradient(135deg, #F3E5F5, #E1BEE7);
-            padding: 25px;
-            border-radius: 15px;
-            margin: 20px 0;
-            animation: slideIn 0.4s ease-out;
-            border-left: 4px solid #7E57C2;
+        @media (min-width: 768px) {
+            .subtitle {
+                font-size: 1.2em;
+            }
         }
 
-        .back-btn {
-            background: linear-gradient(135deg, #5E35B1, #4527A0);
-            margin-top: 20px;
+        /* Mensaje de juego */
+        #gameMessage {
+            color: #7E57C2;
+            font-weight: bold;
+            min-height: 25px;
+            font-size: 0.95em;
+            margin-top: 10px;
         }
 
-        /* Galería de fotos */
-        .photo-gallery {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 25px 0;
-            flex-wrap: wrap;
-        }
-
-        .photo-frame {
-            width: 200px;
-            height: 200px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
-        }
-
-        .photo-frame:hover {
-            transform: scale(1.05);
-        }
-
-        .photo-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Efectos de confeti */
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: #ff0000;
-            animation: confettiFall 5s linear infinite;
-        }
-
-        @keyframes confettiFall {
-            0% { transform: translateY(-100px) rotate(0deg); }
-            100% { transform: translateY(100vh) rotate(360deg); }
+        @media (min-width: 768px) {
+            #gameMessage {
+                font-size: 1em;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Partículas de fondo -->
-    <div class="particles" id="particles"></div>
-
-    <!-- Rosas moradas alrededor -->
-    <div class="rose">💜</div>
-    <div class="rose">🌹</div>
+    <!-- Rosas moradas (solo visibles en pantallas grandes) -->
     <div class="rose">💜</div>
     <div class="rose">🌹</div>
     <div class="rose">💜</div>
@@ -280,125 +279,129 @@
         <div class="card-header">
             <h1>🎉 ¡Feliz Cumpleaños Anheli! 🎂</h1>
             <div class="subtitle">Tu día especial merece algo extraordinario</div>
-            <div style="font-size: 1.5em; margin: 15px 0;">✨ 🌟 ✨</div>
+            <div style="font-size: 1.3em; margin: 12px 0;">✨ 🌟 ✨</div>
         </div>
         
-        <p style="color: #6B7280; font-size: 1.2em; margin-bottom: 10px;">
-            Descubre todas las sorpresas que preparé para ti:
+        <p style="color: #6B7280; font-size: 1em; margin-bottom: 8px;">
+            Descubre todas las sorpresas:
         </p>
         
         <div class="options">
-            <button class="btn" onclick="showMessage()">💌 Mensaje Especial</button>
+            <button class="btn" onclick="showMessage()">💌 Mensaje</button>
             <button class="btn" onclick="showPhotos()">📸 Galería</button>
-            <button class="btn" onclick="showGame()">🎮 Juego Sorpresa</button>
+            <button class="btn" onclick="showGame()">🎮 Juego</button>
             <button class="btn" onclick="showMusic()">🎵 Canción</button>
-            <button class="btn" onclick="showMemories()">📖 Nuestros Recuerdos</button>
-            <button class="btn" onclick="showCake()">🎂 Sopla las Velas</button>
+            <button class="btn" onclick="showMemories()">📖 Recuerdos</button>
+            <button class="btn" onclick="showCake()">🎂 Velas</button>
         </div>
 
         <!-- SECCIÓN MENSAJE ESPECIAL -->
         <div id="message" class="hidden message">
-            <h3 style="color: #7E57C2; margin-bottom: 20px;">💜 My Queen Anheli 💜</h3>
-            <div style="text-align: left; line-height: 1.8; font-size: 1.2em; color: #374151;">
-                <p>✨ Eres increíblemente valiosa para mí. Cada momento a tu lado es un tesoro que guardo en mi corazón. ✨</p>
-                <p>🌙 Eres esa luz que guía mis pasos cuando todo se oscurece a mi alrededor, mi faro en la tormenta. 🌙</p>
-                <p>🎀 Hoy, en tu día especial, quiero que sepas que mereces todo lo bueno y maravilloso que la vida pueda ofrecer. 🎀</p>
-                <p>⭐ De verdad deseo que cada uno de tus sueños se haga realidad, que cada deseo encuentre su camino hacia ti. ⭐</p>
+            <h3 style="color: #7E57C2; margin-bottom: 15px; font-size: 1.3em;">💜 My Queen Anheli 💜</h3>
+            <div style="text-align: left; line-height: 1.6; font-size: 1em; color: #374151;">
+                <p>✨ Eres increíblemente valiosa para mí. Cada momento a tu lado es un tesoro. ✨</p>
+                <p>🌙 Eres esa luz que guía mis pasos cuando todo se oscurece. 🌙</p>
+                <p>🎀 Mereces todo lo bueno y maravilloso que la vida pueda ofrecer. 🎀</p>
+                <p>⭐ Que cada uno de tus sueños se haga realidad. ⭐</p>
             </div>
-            <div style="margin: 25px 0; font-size: 1.5em;">
+            <div style="margin: 20px 0; font-size: 1.3em;">
                 💖 🌹 💖
             </div>
-            <p style="text-align: center; font-size: 1.5em; margin-top: 20px; animation: pulse 2s infinite;">
-                🎆 FELIZ CUMPLEAÑOS MI REINA 🎇
+            <p style="text-align: center; font-size: 1.2em; margin-top: 15px; animation: pulse 2s infinite;">
+                🎆 FELIZ CUMPLEAÑOS 🎇
             </p>
         </div>
 
         <!-- SECCIÓN GALERÍA -->
         <div id="photos" class="hidden message">
-            <h3 style="color: #7E57C2; margin-bottom: 20px;">📸 Galería de Recuerdos</h3>
-            <p style="color: #6B7280; margin-bottom: 20px;">Momentos especiales que atesoro en mi corazón</p>
+            <h3 style="color: #7E57C2; margin-bottom: 15px; font-size: 1.3em;">📸 Galería</h3>
+            <p style="color: #6B7280; margin-bottom: 15px; font-size: 0.95em;">Momentos especiales que atesoro</p>
             
             <div class="photo-gallery">
                 <div class="photo-frame">
-                    <img src="IMG_20251004_160940.jpg" alt="Nuestro momento especial">
+                    <img src="IMG_20251004_160940.jpg" alt="Nuestro momento especial" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
-                <div class="photo-frame" style="background: linear-gradient(135deg, #8B5CF6, #EC4899); display: flex; align-items: center; justify-content: center; color: white; font-size: 3em;">
+                <div class="photo-frame" style="background: linear-gradient(135deg, #8B5CF6, #EC4899); display: flex; align-items: center; justify-content: center; color: white; font-size: 2em;">
                     💖
-                </div>
-                <div class="photo-frame" style="background: linear-gradient(135deg, #FF6B6B, #FFE66D); display: flex; align-items: center; justify-content: center; color: white; font-size: 3em;">
-                    🌟
                 </div>
             </div>
             
-            <p style="margin-top: 20px; color: #6B7280;">
-                Cada foto cuenta una historia... nuestra historia 💕
+            <p style="margin-top: 15px; color: #6B7280; font-size: 0.9em;">
+                Cada foto cuenta nuestra historia 💕
             </p>
         </div>
 
         <!-- SECCIÓN JUEGO -->
         <div id="game" class="hidden message">
-            <h3 style="color: #7E57C2; margin-bottom: 20px;">🎮 Encuentra el Regalo</h3>
-            <p style="color: #6B7280; margin-bottom: 20px;">¡Haz clic en el regalo escondido para descubrir tu sorpresa!</p>
+            <h3 style="color: #7E57C2; margin-bottom: 15px; font-size: 1.3em;">🎮 Busca el Regalo</h3>
+            <p style="color: #6B7280; margin-bottom: 15px; font-size: 0.95em;">¡Haz clic para encontrar la sorpresa!</p>
             
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 30px 0;">
-                <button onclick="checkGift(this)" style="font-size: 3em; background: none; border: none; cursor: pointer;">🎁</button>
-                <button onclick="checkGift(this)" style="font-size: 3em; background: none; border: none; cursor: pointer;">🎁</button>
-                <button onclick="checkGift(this)" style="font-size: 3em; background: none; border: none; cursor: pointer;">🎁</button>
-                <button onclick="checkGift(this)" style="font-size: 3em; background: none; border: none; cursor: pointer;">🎁</button>
-                <button onclick="checkGift(this)" id="realGift" style="font-size: 3em; background: none; border: none; cursor: pointer;">🎁</button>
-                <button onclick="checkGift(this)" style="font-size: 3em; background: none; border: none; cursor: pointer;">🎁</button>
+            <div class="game-grid">
+                <button class="game-btn" onclick="checkGift(this)">🎁</button>
+                <button class="game-btn" onclick="checkGift(this)">🎁</button>
+                <button class="game-btn" onclick="checkGift(this)">🎁</button>
+                <button class="game-btn" onclick="checkGift(this)">🎁</button>
+                <button class="game-btn" onclick="checkGift(this)" id="realGift">🎁</button>
+                <button class="game-btn" onclick="checkGift(this)">🎁</button>
             </div>
             
-            <p id="gameMessage" style="color: #7E57C2; font-weight: bold; min-height: 30px;"></p>
+            <p id="gameMessage"></p>
         </div>
 
-        <!-- SECCIÓN RECUERDOS (se mantiene igual pero con mejor estilo) -->
-        <div id="memories" class="hidden memory-section">
-            <h3 style="color: #7E57C2; margin-bottom: 20px;">📖 Nuestros Recuerdos 💖</h3>
-            <p style="color: #6B7280; margin-bottom: 20px;">Elige un recuerdo especial de nuestro viaje juntos</p>
+        <!-- SECCIÓN RECUERDOS -->
+        <div id="memories" class="hidden message">
+            <h3 style="color: #7E57C2; margin-bottom: 15px; font-size: 1.3em;">📖 Nuestros Recuerdos</h3>
+            <p style="color: #6B7280; margin-bottom: 15px; font-size: 0.95em;">Elige un recuerdo especial</p>
             
             <div class="memories-options">
                 <button class="btn memory-btn" onclick="showMemory('memory1')">💫 Cómo nos conocimos</button>
-                <button class="btn memory-btn" onclick="showMemory('memory2')">🍳 La primera vez que cociné para ti</button>
-                <button class="btn memory-btn" onclick="showMemory('memory3')">🏃 Salir de álgebra para recogerte</button>
-                <button class="btn memory-btn" onclick="showMemory('memory4')">📞 Cuando me llamaste</button>
-                <button class="btn memory-btn" onclick="showMemory('memory5')">🏖️ Tomando en la playa</button>
-                <button class="btn memory-btn" onclick="showMemory('memory6')">🎥 Tu video de despedida</button>
-                <button class="btn memory-btn" onclick="showMemory('memory7')">💤 Los 3 días sin respuesta</button>
-                <button class="btn memory-btn" onclick="showMemory('memory8')">🌅 Año nuevo hasta el amanecer</button>
-                <button class="btn memory-btn" onclick="showMemory('memory9')">⏰ Llegamos tarde a Administración</button>
-                <button class="btn memory-btn" onclick="showMemory('memory10')">💌 Cuando te dije "me gustas"</button>
+                <button class="btn memory-btn" onclick="showMemory('memory2')">🍳 Primera comida para ti</button>
+                <button class="btn memory-btn" onclick="showMemory('memory3')">🏃 Escape de álgebra</button>
+                <button class="btn memory-btn" onclick="showMemory('memory4')">📞 Tu llamada</button>
+                <button class="btn memory-btn" onclick="showMemory('memory5')">🏖️ Noche en playa</button>
+                <button class="btn memory-btn" onclick="showMemory('memory10')">💌 Te dije "me gustas"</button>
             </div>
 
             <!-- Sub-secciones de recuerdos -->
             <div id="memory1" class="memory-detail hidden">
-                <h4 style="color: #5E35B1;">💫 Nuestro Primer Encuentro</h4>
-                <p style="line-height: 1.6; color: #374151;">Recuerdo ese día como si fuera ayer... [tu descripción aquí]</p>
-                <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
+                <h4 style="color: #5E35B1; font-size: 1.1em;">💫 Nuestro Primer Encuentro</h4>
+                <p style="line-height: 1.5; color: #374151; font-size: 0.95em;">Recuerdo ese día como si fuera ayer... [tu descripción aquí]</p>
+                <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
             </div>
 
-            <!-- ... (las demás sub-secciones de recuerdos se mantienen igual) ... -->
+            <div id="memory2" class="memory-detail hidden">
+                <h4 style="color: #5E35B1; font-size: 1.1em;">🍳 Mi Primera Comida para Ti</h4>
+                <p style="line-height: 1.5; color: #374151; font-size: 0.95em;">Nervioso pero emocionado, preparé... [tu descripción aquí]</p>
+                <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
+            </div>
 
+            <div id="memory3" class="memory-detail hidden">
+                <h4 style="color: #5E35B1; font-size: 1.1em;">🏃 El Escape de Álgebra</h4>
+                <p style="line-height: 1.5; color: #374151; font-size: 0.95em;">Dejé la clase sin pensarlo... [tu descripción aquí]</p>
+                <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
+            </div>
+
+            <div id="memory4" class="memory-detail hidden">
+                <h4 style="color: #5E35B1; font-size: 1.1em;">📞 Tu Llamada</h4>
+                <p style="line-height: 1.5; color: #374151; font-size: 0.95em;">Cuando escuché tu voz... [tu descripción aquí]</p>
+                <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
+            </div>
+
+            <div id="memory5" class="memory-detail hidden">
+                <h4 style="color: #5E35B1; font-size: 1.1em;">🏖️ Noche en la Playa</h4>
+                <p style="line-height: 1.5; color: #374151; font-size: 0.95em;">Bajo las estrellas... [tu descripción aquí]</p>
+                <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
+            </div>
+
+            <div id="memory10" class="memory-detail hidden">
+                <h4 style="color: #5E35B1; font-size: 1.1em;">💌 Mi Confesión</h4>
+                <p style="line-height: 1.5; color: #374151; font-size: 0.95em;">El momento en que te dije... [tu descripción aquí]</p>
+                <button class="btn back-btn" onclick="backToMemories()">← Volver</button>
+            </div>
         </div>
     </div>
 
     <script>
-        // Crear partículas de fondo
-        function createParticles() {
-            const particles = document.getElementById('particles');
-            for (let i = 0; i < 50; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.width = Math.random() * 5 + 2 + 'px';
-                particle.style.height = particle.style.width;
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 8 + 's';
-                particle.style.background = `rgba(255, 255, 255, ${Math.random() * 0.4 + 0.2})`;
-                particles.appendChild(particle);
-            }
-        }
-
         // Funciones de navegación
         function showMessage() {
             hideAll();
@@ -417,11 +420,10 @@
 
         function showMusic() {
             hideAll();
-            // Simular reproducción de música
             const messages = [
                 "🎵 ¡Que suene la fiesta! 🎶",
                 "🎼 Feliz cumpleaños te canto 🎤",
-                "🎧 La banda sonora de tu día especial 🎸"
+                "🎧 Tu canción especial 🎸"
             ];
             alert(messages[Math.floor(Math.random() * messages.length)]);
         }
@@ -433,16 +435,14 @@
 
         function showCake() {
             hideAll();
-            // Animación de velas
-            alert("🎂 ¡Sopla las velas y pide un deseo! 🕯️✨\nQue todos tus sueños se hagan realidad 💖");
+            alert("🎂 ¡Sopla las velas y pide un deseo! 🕯️✨");
         }
 
         function hideAll() {
-            const sections = document.querySelectorAll('.message, .memory-section');
+            const sections = document.querySelectorAll('.message');
             sections.forEach(el => {
                 el.style.display = 'none';
             });
-            // Volver al menú principal de recuerdos si está abierto
             backToMemories();
         }
 
@@ -453,19 +453,19 @@
             if (element.id === 'realGift') {
                 giftsFound++;
                 if (giftsFound === 1) {
-                    message.textContent = "🎉 ¡Encontraste el regalo! Eres increíble 💖";
+                    message.textContent = "🎉 ¡Encontraste el regalo! 💖";
                     element.textContent = "💝";
-                    element.style.transform = "scale(1.3)";
+                    element.style.transform = "scale(1.2)";
                     setTimeout(() => {
                         element.style.transform = "scale(1)";
                     }, 500);
                 }
             } else {
-                message.textContent = "💫 Sigue buscando... ¡Tú puedes!";
+                message.textContent = "💫 Sigue buscando...";
                 element.textContent = "📦";
                 setTimeout(() => {
                     element.textContent = "🎁";
-                }, 1000);
+                }, 800);
             }
         }
 
@@ -479,33 +479,11 @@
             document.querySelectorAll('.memory-detail').forEach(el => {
                 el.style.display = 'none';
             });
-            document.querySelector('.memories-options').style.display = 'grid';
-            giftsFound = 0; // Resetear juego
-        }
-
-        // Inicializar
-        document.addEventListener('DOMContentLoaded', function() {
-            createParticles();
-            
-            // Efecto de confeti ocasional
-            setInterval(() => {
-                if (Math.random() > 0.7) {
-                    createConfetti();
-                }
-            }, 3000);
-        });
-
-        function createConfetti() {
-            const confetti = document.createElement('div');
-            confetti.className = 'confetti';
-            confetti.style.left = Math.random() * 100 + '%';
-            confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
-            confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
-            document.body.appendChild(confetti);
-            
-            setTimeout(() => {
-                confetti.remove();
-            }, 5000);
+            const memoriesOptions = document.querySelector('.memories-options');
+            if (memoriesOptions) {
+                memoriesOptions.style.display = 'grid';
+            }
+            giftsFound = 0;
         }
     </script>
 </body>
