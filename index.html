@@ -236,6 +236,127 @@
             color: #374151;
             box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
         }
+
+        /* Estilos para la sección de velas */
+        .cake-section {
+            background: linear-gradient(135deg, #FFF9C4, #FFEB3B);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-left: 4px solid #8B5CF6;
+        }
+
+        .cake-container {
+            position: relative;
+            width: 280px;
+            height: 300px;
+            margin: 0 auto;
+        }
+
+        .cake {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 80px;
+            background: linear-gradient(to bottom, #f8c471, #e67e22);
+            border-radius: 10px 10px 0 0;
+            z-index: 1;
+        }
+
+        .cake-top {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 220px;
+            height: 30px;
+            background: linear-gradient(to bottom, #ff9ff3, #f368e0);
+            border-radius: 50% 50% 0 0;
+        }
+
+        .candle {
+            position: absolute;
+            bottom: 110px;
+            width: 12px;
+            height: 60px;
+            background: linear-gradient(to bottom, #ffffff, #e74c3c);
+            border-radius: 5px;
+            z-index: 2;
+        }
+
+        .candle:nth-child(1) {
+            left: 25%;
+        }
+
+        .candle:nth-child(2) {
+            left: 40%;
+        }
+
+        .candle:nth-child(3) {
+            left: 60%;
+        }
+
+        .candle:nth-child(4) {
+            left: 75%;
+        }
+
+        .flame {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 15px;
+            height: 25px;
+            background: linear-gradient(to bottom, #ffeb3b, #ff5722);
+            border-radius: 50% 50% 20% 20%;
+            box-shadow: 0 0 10px #ff9800, 0 0 20px #ff5722;
+            animation: flicker 1.5s infinite alternate;
+            z-index: 3;
+            cursor: pointer;
+        }
+
+        .flame.blown {
+            opacity: 0;
+            transform: translateX(-50%) scale(0.5);
+            transition: all 0.5s ease;
+        }
+
+        .instructions {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #7E57C2;
+            font-weight: bold;
+        }
+
+        .wish-message {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            display: none;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes flicker {
+            0%, 100% {
+                transform: translateX(-50%) scaleY(1);
+            }
+            50% {
+                transform: translateX(-50%) scaleY(1.1);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
@@ -427,6 +548,40 @@
                 <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
             </div>
         </div>
+
+        <!-- SECCIÓN VELAS INTERACTIVAS -->
+        <div id="cake" class="hidden cake-section">
+            <h3 style="color: #7E57C2; margin-bottom: 15px; font-size: 1.3em;">🎂 ¡Sopla las Velas! 🕯️</h3>
+            <p style="color: #6B7280; margin-bottom: 15px; font-size: 0.95em;">Toca cada vela para apagarla y pedir tu deseo</p>
+            
+            <div class="cake-container">
+                <div class="cake-top"></div>
+                <div class="cake"></div>
+                
+                <div class="candle">
+                    <div class="flame" id="flame1"></div>
+                </div>
+                <div class="candle">
+                    <div class="flame" id="flame2"></div>
+                </div>
+                <div class="candle">
+                    <div class="flame" id="flame3"></div>
+                </div>
+                <div class="candle">
+                    <div class="flame" id="flame4"></div>
+                </div>
+            </div>
+            
+            <div class="instructions" id="instructions">
+                👆 Toca la pantalla para soplar las velas
+            </div>
+            
+            <div class="wish-message" id="wishMessage">
+                <h3 style="color: #7E57C2; margin-bottom: 10px;">✨ ¡Tu deseo se hará realidad! ✨</h3>
+                <p>Que este nuevo año de vida esté lleno de alegría, amor y momentos inolvidables. 💖</p>
+                <div style="margin-top: 15px; font-size: 1.5em;">🎉 🎂 🎁</div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -466,15 +621,15 @@
 
         function showCake() {
             hideAll();
-            alert("🎂 ¡Sopla las velas y pide un deseo! 🕯️✨\n¡Que todos tus sueños se hagan realidad! 💖");
+            document.getElementById('cake').style.display = 'block';
+            resetCandles();
         }
 
         function hideAll() {
-            const sections = document.querySelectorAll('.message');
-            sections.forEach(el => {
-                el.style.display = 'none';
-            });
-            backToMemories();
+            document.getElementById('message').style.display = 'none';
+            document.getElementById('photos').style.display = 'none';
+            document.getElementById('memories').style.display = 'none';
+            document.getElementById('cake').style.display = 'none';
         }
 
         // Funciones para recuerdos
@@ -493,9 +648,66 @@
             }
         }
 
-        // Inicializar
+        // Funcionalidad de velas interactivas
+        let candlesBlown = 0;
+        const totalCandles = 4;
+        
+        function resetCandles() {
+            candlesBlown = 0;
+            for (let i = 1; i <= totalCandles; i++) {
+                const flame = document.getElementById(`flame${i}`);
+                flame.classList.remove('blown');
+            }
+            document.getElementById('instructions').style.display = 'block';
+            document.getElementById('wishMessage').style.display = 'none';
+        }
+        
+        // Detectar toques en las velas
         document.addEventListener('DOMContentLoaded', function() {
             updateBirthdayCounter();
+            
+            // Agregar event listeners a las velas
+            for (let i = 1; i <= totalCandles; i++) {
+                const flame = document.getElementById(`flame${i}`);
+                flame.addEventListener('click', function() {
+                    if (!this.classList.contains('blown')) {
+                        this.classList.add('blown');
+                        candlesBlown++;
+                        
+                        // Verificar si todas las velas están apagadas
+                        if (candlesBlown === totalCandles) {
+                            setTimeout(function() {
+                                document.getElementById('instructions').style.display = 'none';
+                                document.getElementById('wishMessage').style.display = 'block';
+                            }, 800);
+                        }
+                    }
+                });
+            }
+            
+            // También permitir soplar con cualquier toque en la sección de la torta
+            document.getElementById('cake').addEventListener('click', function(event) {
+                // Solo procesar si el clic no fue directamente en una llama
+                if (!event.target.classList.contains('flame')) {
+                    // Encontrar la primera vela que no esté apagada
+                    for (let i = 1; i <= totalCandles; i++) {
+                        const flame = document.getElementById(`flame${i}`);
+                        if (!flame.classList.contains('blown')) {
+                            flame.classList.add('blown');
+                            candlesBlown++;
+                            
+                            // Verificar si todas las velas están apagadas
+                            if (candlesBlown === totalCandles) {
+                                setTimeout(function() {
+                                    document.getElementById('instructions').style.display = 'none';
+                                    document.getElementById('wishMessage').style.display = 'block';
+                                }, 800);
+                            }
+                            break;
+                        }
+                    }
+                }
+            });
         });
     </script>
 </body>
