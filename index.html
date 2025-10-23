@@ -163,32 +163,6 @@
             }
         }
 
-        /* Juego responsive */
-        .game-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin: 20px 0;
-            max-width: 300px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .game-btn {
-            font-size: 2em;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 10px;
-            border-radius: 10px;
-            transition: transform 0.2s;
-        }
-
-        .game-btn:hover {
-            transform: scale(1.1);
-            background: rgba(139, 92, 246, 0.1);
-        }
-
         /* Recuerdos responsive */
         .memories-options {
             display: grid;
@@ -252,21 +226,6 @@
             }
         }
 
-        /* Mensaje de juego */
-        #gameMessage {
-            color: #7E57C2;
-            font-weight: bold;
-            min-height: 25px;
-            font-size: 0.95em;
-            margin-top: 10px;
-        }
-
-        @media (min-width: 768px) {
-            #gameMessage {
-                font-size: 1em;
-            }
-        }
-
         /* Contador de cumpleaños */
         .birthday-count {
             background: linear-gradient(135deg, #FF6B6B, #FFE66D);
@@ -301,8 +260,6 @@
         <div class="options">
             <button class="btn" onclick="showMessage()">💌 Mensaje</button>
             <button class="btn" onclick="showPhotos()">📸 Galería</button>
-            <button class="btn" onclick="showGame()">🎮 Juego</button>
-            <button class="btn" onclick="showMusic()">🎵 Canción</button>
             <button class="btn" onclick="showMemories()">📖 Recuerdos</button>
             <button class="btn" onclick="showCake()">🎂 Velas</button>
         </div>
@@ -333,6 +290,12 @@
                 <div class="photo-frame">
                     <img src="IMG_20251004_160940.jpg" alt="Nuestro momento especial" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
+                <div class="photo-frame">
+                    <img src="IMG_20250913_171158.jpg" alt="Momento especial 2" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="photo-frame">
+                    <img src="IMG_20250914_155637.jpg" alt="Momento especial 3" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
                 <div class="photo-frame" style="background: linear-gradient(135deg, #8B5CF6, #EC4899); display: flex; align-items: center; justify-content: center; color: white; font-size: 2em;">
                     💖
                 </div>
@@ -341,23 +304,6 @@
             <p style="margin-top: 15px; color: #6B7280; font-size: 0.9em;">
                 Cada foto cuenta nuestra historia 💕
             </p>
-        </div>
-
-        <!-- SECCIÓN JUEGO -->
-        <div id="game" class="hidden message">
-            <h3 style="color: #7E57C2; margin-bottom: 15px; font-size: 1.3em;">🎮 Busca el Regalo</h3>
-            <p style="color: #6B7280; margin-bottom: 15px; font-size: 0.95em;">¡Haz clic para encontrar la sorpresa!</p>
-            
-            <div class="game-grid">
-                <button class="game-btn" onclick="checkGift(this)">🎁</button>
-                <button class="game-btn" onclick="checkGift(this)">🎁</button>
-                <button class="game-btn" onclick="checkGift(this)">🎁</button>
-                <button class="game-btn" onclick="checkGift(this)">🎁</button>
-                <button class="game-btn" onclick="checkGift(this)" id="realGift">🎁</button>
-                <button class="game-btn" onclick="checkGift(this)">🎁</button>
-            </div>
-            
-            <p id="gameMessage"></p>
         </div>
 
         <!-- SECCIÓN RECUERDOS -->
@@ -513,21 +459,6 @@
             document.getElementById('photos').style.display = 'block';
         }
 
-        function showGame() {
-            hideAll();
-            document.getElementById('game').style.display = 'block';
-        }
-
-        function showMusic() {
-            hideAll();
-            const messages = [
-                "🎵 ¡Que suene la fiesta! 🎶",
-                "🎼 Feliz cumpleaños te canto 🎤",
-                "🎧 Tu canción especial 🎸"
-            ];
-            alert(messages[Math.floor(Math.random() * messages.length)]);
-        }
-
         function showMemories() {
             hideAll();
             document.getElementById('memories').style.display = 'block';
@@ -546,29 +477,6 @@
             backToMemories();
         }
 
-        // Juego de regalos
-        let giftsFound = 0;
-        function checkGift(element) {
-            const message = document.getElementById('gameMessage');
-            if (element.id === 'realGift') {
-                giftsFound++;
-                if (giftsFound === 1) {
-                    message.textContent = "🎉 ¡Encontraste el regalo! 💖";
-                    element.textContent = "💝";
-                    element.style.transform = "scale(1.2)";
-                    setTimeout(() => {
-                        element.style.transform = "scale(1)";
-                    }, 500);
-                }
-            } else {
-                message.textContent = "💫 Sigue buscando...";
-                element.textContent = "📦";
-                setTimeout(() => {
-                    element.textContent = "🎁";
-                }, 800);
-            }
-        }
-
         // Funciones para recuerdos
         function showMemory(memoryId) {
             document.querySelector('.memories-options').style.display = 'none';
@@ -583,7 +491,6 @@
             if (memoriesOptions) {
                 memoriesOptions.style.display = 'grid';
             }
-            giftsFound = 0;
         }
 
         // Inicializar
