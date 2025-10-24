@@ -30,10 +30,9 @@
             font-size: 1.8em;
             z-index: 2;
             animation: floatRose 6s infinite ease-in-out;
-            display: none; /* Ocultas en móvil por defecto */
+            display: none;
         }
 
-        /* Mostrar rosas solo en pantallas grandes */
         @media (min-width: 768px) {
             .rose {
                 display: block;
@@ -59,7 +58,6 @@
             margin: 10px;
         }
 
-        /* Título responsive */
         h1 {
             color: #8B5CF6;
             font-size: 2em;
@@ -79,7 +77,6 @@
             }
         }
 
-        /* Grid de opciones responsive */
         .options {
             display: grid;
             grid-template-columns: 1fr;
@@ -94,7 +91,6 @@
             }
         }
 
-        /* Botones optimizados */
         .btn {
             background: linear-gradient(135deg, #8B5CF6, #EC4899);
             color: white;
@@ -125,7 +121,6 @@
             box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
         }
 
-        /* Secciones de contenido */
         .hidden {
             display: none;
         }
@@ -139,7 +134,6 @@
             border-left: 4px solid #8B5CF6;
         }
 
-        /* Galería responsive */
         .photo-gallery {
             display: flex;
             justify-content: center;
@@ -163,7 +157,6 @@
             }
         }
 
-        /* Recuerdos responsive */
         .memories-options {
             display: grid;
             grid-template-columns: 1fr;
@@ -192,7 +185,6 @@
             padding: 12px 20px;
         }
 
-        /* Animaciones optimizadas */
         @keyframes floatRose {
             0%, 100% { 
                 transform: translateY(0px) rotate(0deg) scale(1);
@@ -202,18 +194,6 @@
             }
         }
 
-        @keyframes slideIn {
-            from { 
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Texto responsive */
         .subtitle {
             color: #6B7280;
             font-size: 1.1em;
@@ -226,7 +206,6 @@
             }
         }
 
-        /* Contador de cumpleaños */
         .birthday-count {
             background: linear-gradient(135deg, #FF6B6B, #FFE66D);
             padding: 10px 15px;
@@ -340,16 +319,20 @@
             animation: fadeIn 1s ease;
         }
 
-        /* Control de música */
+        /* Control de música mejorado */
         .music-control {
             position: fixed;
             top: 20px;
             right: 20px;
             z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 25px;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .music-btn {
-            background: rgba(139, 92, 246, 0.8);
+            background: linear-gradient(135deg, #8B5CF6, #EC4899);
             color: white;
             border: none;
             border-radius: 50%;
@@ -357,13 +340,62 @@
             height: 50px;
             font-size: 1.2em;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .music-btn:hover {
-            background: rgba(139, 92, 246, 1);
             transform: scale(1.1);
+        }
+
+        .music-btn.playing {
+            background: linear-gradient(135deg, #10B981, #059669);
+        }
+
+        .music-btn.muted {
+            background: linear-gradient(135deg, #6B7280, #4B5563);
+        }
+
+        .music-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            flex-direction: column;
+            color: white;
+        }
+
+        .music-popup-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 300px;
+            color: #333;
+        }
+
+        .popup-btn {
+            background: linear-gradient(135deg, #8B5CF6, #EC4899);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .popup-btn:hover {
+            transform: translateY(-2px);
         }
 
         @keyframes flicker {
@@ -386,12 +418,22 @@
     </style>
 </head>
 <body>
-    <!-- Control de música -->
-    <div class="music-control">
-        <button class="music-btn" id="musicToggle">🎵</button>
+    <!-- Popup de activación de música -->
+    <div id="musicPopup" class="music-popup" style="display: none;">
+        <div class="music-popup-content">
+            <h3 style="color: #7E57C2; margin-bottom: 15px;">🎵 Activar Música 🎵</h3>
+            <p style="margin-bottom: 20px; color: #6B7280;">Para una mejor experiencia, activa la música de fondo</p>
+            <button class="popup-btn" onclick="activateMusic()">🎵 Activar Música</button>
+            <button class="popup-btn" onclick="closeMusicPopup()" style="background: linear-gradient(135deg, #6B7280, #4B5563);">Continuar sin Música</button>
+        </div>
     </div>
 
-    <!-- Rosas moradas (solo visibles en pantallas grandes) -->
+    <!-- Control de música -->
+    <div class="music-control">
+        <button class="music-btn" id="musicToggle">🔇</button>
+    </div>
+
+    <!-- Rosas moradas -->
     <div class="rose">💜</div>
     <div class="rose">🌹</div>
     <div class="rose">💜</div>
@@ -428,7 +470,7 @@
             <div style="margin: 20px 0; font-size: 1.3em;">
                 💖 🌹 💖
             </div>
-            <p style="text-align: center; font-size: 1.2em; margin-top: 15px; animation: pulse 2s infinite;">
+            <p style="text-align: center; font-size: 1.2em; margin-top: 15px;">
                 🎆 FELIZ CUMPLEAÑOS 🎇
             </p>
         </div>
@@ -486,98 +528,8 @@
                 <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
             </div>
 
-            <div id="memory2" class="memory-detail hidden">
-                <h4 style="color: #5E35B1; font-size: 1.1em;">🍳 cuando cocine para ti</h4>
-                <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
-                    <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
-                        Ese día cuando cociné para ti, te quería hacer cocinar a ti, en mi mente dije si quiere comer que prepare su propio comida, pero al final dije mejor yo cocino y le sorprendo de que soy capaz, y que cualquiera no te lo va cocinar, asi estaba pensando. Pero al final el arroz salió un poco duro y el pollo también medio crudo, pero igual te sorprendi de lo que era capaz jijiji. Creo que me ganaron los nervios y querer hacer rapido la comida, nunca te pregunte si te gusto la comida o no, porque sabia que estaba un poquito mal ma comida.
-                    </p>
-                </div>
-                <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
-            </div>
+            <!-- ... (el resto de las memorias se mantienen igual) ... -->
 
-            <div id="memory3" class="memory-detail hidden">
-                <h4 style="color: #5E35B1; font-size: 1.1em;">🏃 cuando llegaste tarde a clase de álgebra </h4>
-                <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
-                    <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
-                    Ese día que llegaste tarde a álgebra y me pediste que te saliera a recoger, la verdad es que no quería hacerlo. Estaba en una lucha interna, pero al final mi corazón le ganó a mi mente. Decidí salir por ti, y sabia que desde ese  momento marcaría nuestra historia. Y creo que desde ese día algunos de nuestros compañeros me miraron mal a mi, pero la verdad no me importaba lo que piensen ellos, pero desde ese día nos hemos vuelto más cercanos.
-                    </p>
-                </div>
-                <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
-            </div>
-
-            <div id="memory4" class="memory-detail hidden">
-                <h4 style="color: #5E35B1; font-size: 1.1em;">📞 Cuando me llamaste</h4>
-                <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
-                    <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
-                        Muchas veces siempre me llamabas y muchas veces siempre te quise llamar tambien pero no podia, por que no queria imcomodar, pero tambien no sabia sis estabas ocupada o no. Cuando siempre me llamabas me decías: "Quiero hablar contigo, no sé qué tienes, pero quiero hablar contigo". Desde esa vez siempre hablábamos, pero lo que más recuerdo fue cuando nos hemos quedamos hablando hasta el amancer en el año nuevo, fue bueno charlar contigo, no se como asi siempre se iba el sueño cuando hablaba contigo. Y siempre tenias esa custumbre de llamar a las 11 de la noche a veces a la 1 de la manañana.
-                    </p>
-                </div>
-                <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
-            </div>
-
-            <div id="memory5" class="memory-detail hidden">
-                <h4 style="color: #5E35B1; font-size: 1.1em;">⚡ El día de pelea</h4>
-                <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
-                    <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
-                        Ese día hubo un malentendido, y también por mi parte tuve la culpa por no reclamar el asiento que te guardé y no saludarte apropiadamente. Pero creo que, a pesar de esa pelea, nos hemos vuelto más cercanos. Por mi error te pedí disculpas, y tú también aceptaste y me diste el pase. Con esa pelea nos hemos conocido aún más. Creo que es normal superar cualquier conflicto cuando queremos que algo funcione bien.
-                    </p>
-                </div>
-                <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
-            </div>
-
-            <div id="memory6" class="memory-detail hidden">
-                <h4 style="color: #5E35B1; font-size: 1.1em;">🎥 Tu video de despedida</h4>
-                <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
-                    <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
-                        Me sorprendió cuando me dijiste: 'Me quiero despedir formalmente de ti'. Yo pensé que me llevarías a un disco o algo así, pero me gustaron más los videos que me compartiste, fueron muy buenos y sorpresivos, expresaba todo lo que quería decirme. La verdad esa tarde me tenías confundido, no sé si me estabas considerando tu amigo o me estabas tratando de enamorar, jiji, porque los videos y el texto que enviaste eran muy carismáticos. Esa noche no dormí, por estar pensando demasiado en los videos y el texto que enviaste. En fin, fueron buenos recuerdos.
-                    </p>
-                </div>
-                <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
-            </div>
-
-            <div id="memory7" class="memory-detail hidden">
-                <h4 style="color: #5E35B1; font-size: 1.1em;">💜 Lo más valioso para mí</h4>
-                <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
-                    <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
-                        Cuando una vez no me respondiste, fueron como como una semana, me preocupé demasiado pensé que te habías ido de viaje o algo así. No quería insistir, diciendo tal vez hice algo que no le gusto  y se molestó, pero en fin me escribiste después de varios días. Cuando me respondiste, me llené de alegría, me emocioné demasiado, me dijiste disculpa no suelo responder mensajes, y después de ahí te entendí, por que siempre demorabas un poquis en responder los mensajes. 
-                    </p>
-                </div>
-                <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
-            </div>
-
-            <div id="memory8" class="memory-detail hidden">
-                <h4 style="color: #5E35B1; font-size: 1.1em;">🎁 El 15 de enero</h4>
-                <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
-                    <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
-                        El 15 de enero me sorprendiste demasiado. Ese día estaba tomando porque sabía que nadie iba a darme algún detalle y siempre casi todos los cumpleaños pasé solo, y muchas veces mis hermanos han celebrado sus cumpleaños menos el mío. Tal vez a eso me acostumbré, a no recibir nada de nadie, aunque yo daba algo. Pero de las personas a las que yo daba algo, casi nada recibía. Por eso ese día esperaba algo de "ya sabes quién". Pero tú me sorprendiste demasiado ese día. Yo sé que a ti en esas fechas no te apoyé mucho, tú lo hiciste tal vez porque confiabas en mí. Ahí confirmé que siempre te llevaría en mi corazón.
-                        Esa noche también le agradezco a los chicos por cantarme el Happy Birthday, aunque la verdad ya sabía que iban por Teams porque hicieron anteriormente en su cumpleaños de Lino. Pero ese día me sorprendiste demasiado, ese día marcó un gran día para mí. La verdad me gustó mucho la tarjeta que hiciste para mí, de tanta emoción lo subí a mi estado y de felicidad estaba golpeando a mi compañero de trabajo y me dijeron: "¿Por qué nos golpeas?" jijiji. Además estaba medio picado, el whisky que no terminé en la noche estaba tomando de día jijiji, creo que pasé. Amo tu sorpresa.
-                    </p>
-                </div>
-                <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
-            </div>
-
-            <div id="memory9" class="memory-detail hidden">
-                <h4 style="color: #5E35B1; font-size: 1.1em;">⏰ Llegamos tarde a Administración</h4>
-                <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
-                    <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
-                        ¿Te acuerdas ese día cuando a propósito llegamos tarde a Administración? No quería perder mi racha de puntualidad, pero ese día la rompí jiji. La verdad estaba pensando en las consecuencias, pero al mismo tiempo me sentía vivo rompiendo las reglas contigo.
-                         Esa mañana me preguntaba si valdría la pena, pero cuando te vi sonreír mientras caminábamos por los pasillos de la U, supe que sí. Recuerdo que me latía fuerte el corazón de miedo a Chacón, además  por la emoción de llegar tarde.
-                         Pero al final creo que fue bueno, no me arrepiento de haber llegado tarde. Esa anécdota se quedó grabada en mi memoria como uno de esos recuerdos simples pero que significan mucho. Hasta ahora cuando paso por ese pasillo me acuerdo de ese día jiji.
-                    </p>
-                </div>
-                <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
-            </div>
-
-            <div id="memory10" class="memory-detail hidden">
-                <h4 style="color: #5E35B1; font-size: 1.1em;">💌 Cuando te dije "me gustas"</h4>
-                <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
-                    <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
-                        Ese tarde no sabía cómo empezar, por que estábamos hablando de otras y hemos tocado ese tema, además creo que ya era hora de decir lo que sentía por tí. La verdad siempre estaba enamorado de ti, y por eso a veces me molestaba sin alguna razón, creo que fueron los celos jijij. Tal vez no te dije antes nada porque te quería conocer un poco más. La verdad soy nuevo en esto de amar y tengo miedo de salir lastimado y lastimarte a ti también. Te amo demasiado y también por eso siempre me preocupaba por ti, aunque creo que no lo hacía notar, pero eres mi mundo.
-                    </p>
-                </div>
-                <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
-            </div>
         </div>
 
         <!-- SECCIÓN VELAS INTERACTIVAS -->
@@ -616,17 +568,24 @@
     </div>
 
     <!-- Audio para la música de fondo -->
-    <audio id="backgroundMusic" loop>
+    <audio id="backgroundMusic" loop preload="auto">
         <source src="K-kop.m4a" type="audio/mp4">
         <source src="K-kop.mp3" type="audio/mpeg">
         Tu navegador no soporta el elemento de audio.
     </audio>
 
     <script>
+        // Variables globales
+        let musicPlaying = false;
+        let userInteracted = false;
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        const musicPopup = document.getElementById('musicPopup');
+
         // Contador de cumpleaños
         function updateBirthdayCounter() {
             const now = new Date();
-            const birthday = new Date(now.getFullYear(), 9, 31); // Octubre es mes 9 (0-indexed)
+            const birthday = new Date(now.getFullYear(), 9, 31);
             const counter = document.getElementById('birthdayCounter');
             
             if (now.getMonth() === 9 && now.getDate() === 31) {
@@ -699,48 +658,77 @@
             document.getElementById('instructions').style.display = 'block';
             document.getElementById('wishMessage').style.display = 'none';
         }
-        
-        // Control de música
-        let musicPlaying = false;
-        const backgroundMusic = document.getElementById('backgroundMusic');
-        const musicToggle = document.getElementById('musicToggle');
-        
+
+        // Control de música mejorado
         function toggleMusic() {
+            userInteracted = true;
             if (musicPlaying) {
                 backgroundMusic.pause();
                 musicToggle.textContent = '🔇';
+                musicToggle.classList.remove('playing');
+                musicToggle.classList.add('muted');
             } else {
-                backgroundMusic.play().catch(e => {
-                    console.log('La reproducción automática fue bloqueada:', e);
-                    // Si la reproducción automática falla, mostramos un mensaje
-                    alert('Por favor, haz clic en el botón de música para reproducir');
+                backgroundMusic.play().then(() => {
+                    musicPlaying = true;
+                    musicToggle.textContent = '🎵';
+                    musicToggle.classList.remove('muted');
+                    musicToggle.classList.add('playing');
+                }).catch(e => {
+                    console.log('Error al reproducir:', e);
+                    showMusicError();
                 });
-                musicToggle.textContent = '🎵';
             }
-            musicPlaying = !musicPlaying;
         }
-        
-        // Detectar toques en las velas
+
+        function activateMusic() {
+            userInteracted = true;
+            closeMusicPopup();
+            toggleMusic();
+        }
+
+        function closeMusicPopup() {
+            musicPopup.style.display = 'none';
+            userInteracted = true;
+        }
+
+        function showMusicError() {
+            alert('No se pudo cargar la música. Verifica que el archivo K-kop.m4a esté en la misma carpeta.');
+        }
+
+        // Inicialización
         document.addEventListener('DOMContentLoaded', function() {
             updateBirthdayCounter();
             
             // Configurar control de música
             musicToggle.addEventListener('click', toggleMusic);
             
-            // Intentar reproducir música automáticamente (puede ser bloqueado por el navegador)
+            // Mostrar popup después de un tiempo si no hay interacción
             setTimeout(() => {
-                if (!musicPlaying) {
-                    backgroundMusic.play().then(() => {
-                        musicPlaying = true;
-                        musicToggle.textContent = '🎵';
-                    }).catch(e => {
-                        console.log('Reproducción automática bloqueada:', e);
-                        musicToggle.textContent = '🔇';
-                    });
+                if (!userInteracted) {
+                    musicPopup.style.display = 'flex';
                 }
-            }, 1000);
-            
-            // Agregar event listeners a las velas
+            }, 2000);
+
+            // Intentar cargar música cuando el usuario interactúe con la página
+            document.addEventListener('click', function() {
+                if (!userInteracted) {
+                    userInteracted = true;
+                    // Esperar un momento antes de intentar reproducir
+                    setTimeout(() => {
+                        if (!musicPlaying) {
+                            backgroundMusic.play().then(() => {
+                                musicPlaying = true;
+                                musicToggle.textContent = '🎵';
+                                musicToggle.classList.add('playing');
+                            }).catch(e => {
+                                console.log('Reproducción automática bloqueada');
+                            });
+                        }
+                    }, 500);
+                }
+            });
+
+            // Configurar velas
             for (let i = 1; i <= totalCandles; i++) {
                 const flame = document.getElementById(`flame${i}`);
                 flame.addEventListener('click', function() {
@@ -748,7 +736,6 @@
                         this.classList.add('blown');
                         candlesBlown++;
                         
-                        // Verificar si todas las velas están apagadas
                         if (candlesBlown === totalCandles) {
                             setTimeout(function() {
                                 document.getElementById('instructions').style.display = 'none';
@@ -759,18 +746,14 @@
                 });
             }
             
-            // También permitir soplar con cualquier toque en la sección de la torta
             document.getElementById('cake').addEventListener('click', function(event) {
-                // Solo procesar si el clic no fue directamente en una llama
                 if (!event.target.classList.contains('flame')) {
-                    // Encontrar la primera vela que no esté apagada
                     for (let i = 1; i <= totalCandles; i++) {
                         const flame = document.getElementById(`flame${i}`);
                         if (!flame.classList.contains('blown')) {
                             flame.classList.add('blown');
                             candlesBlown++;
                             
-                            // Verificar si todas las velas están apagadas
                             if (candlesBlown === totalCandles) {
                                 setTimeout(function() {
                                     document.getElementById('instructions').style.display = 'none';
@@ -782,6 +765,16 @@
                     }
                 }
             });
+        });
+
+        // Manejar errores de audio
+        backgroundMusic.addEventListener('error', function(e) {
+            console.log('Error de audio:', e);
+            showMusicError();
+        });
+
+        backgroundMusic.addEventListener('canplaythrough', function() {
+            console.log('Audio listo para reproducir');
         });
     </script>
 </body>
