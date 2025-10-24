@@ -340,6 +340,32 @@
             animation: fadeIn 1s ease;
         }
 
+        /* Control de música */
+        .music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .music-btn {
+            background: rgba(139, 92, 246, 0.8);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2em;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .music-btn:hover {
+            background: rgba(139, 92, 246, 1);
+            transform: scale(1.1);
+        }
+
         @keyframes flicker {
             0%, 100% {
                 transform: translateX(-50%) scaleY(1);
@@ -360,6 +386,11 @@
     </style>
 </head>
 <body>
+    <!-- Control de música -->
+    <div class="music-control">
+        <button class="music-btn" id="musicToggle">🎵</button>
+    </div>
+
     <!-- Rosas moradas (solo visibles en pantallas grandes) -->
     <div class="rose">💜</div>
     <div class="rose">🌹</div>
@@ -584,6 +615,13 @@
         </div>
     </div>
 
+    <!-- Audio para la música de fondo -->
+    <audio id="backgroundMusic" loop>
+        <source src="K-kop.m4a" type="audio/mp4">
+        <source src="K-kop.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
     <script>
         // Contador de cumpleaños
         function updateBirthdayCounter() {
@@ -662,9 +700,45 @@
             document.getElementById('wishMessage').style.display = 'none';
         }
         
+        // Control de música
+        let musicPlaying = false;
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        
+        function toggleMusic() {
+            if (musicPlaying) {
+                backgroundMusic.pause();
+                musicToggle.textContent = '🔇';
+            } else {
+                backgroundMusic.play().catch(e => {
+                    console.log('La reproducción automática fue bloqueada:', e);
+                    // Si la reproducción automática falla, mostramos un mensaje
+                    alert('Por favor, haz clic en el botón de música para reproducir');
+                });
+                musicToggle.textContent = '🎵';
+            }
+            musicPlaying = !musicPlaying;
+        }
+        
         // Detectar toques en las velas
         document.addEventListener('DOMContentLoaded', function() {
             updateBirthdayCounter();
+            
+            // Configurar control de música
+            musicToggle.addEventListener('click', toggleMusic);
+            
+            // Intentar reproducir música automáticamente (puede ser bloqueado por el navegador)
+            setTimeout(() => {
+                if (!musicPlaying) {
+                    backgroundMusic.play().then(() => {
+                        musicPlaying = true;
+                        musicToggle.textContent = '🎵';
+                    }).catch(e => {
+                        console.log('Reproducción automática bloqueada:', e);
+                        musicToggle.textContent = '🔇';
+                    });
+                }
+            }, 1000);
             
             // Agregar event listeners a las velas
             for (let i = 1; i <= totalCandles; i++) {
