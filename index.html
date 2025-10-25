@@ -217,107 +217,109 @@
         }
 
         /* Estilos para la sección de velas */
-        .cake-section {
-            background: linear-gradient(135deg, #FFF9C4, #FFEB3B);
-            padding: 20px;
-            border-radius: 15px;
-            margin: 20px 0;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            border-left: 4px solid #8B5CF6;
-        }
+.cake-section {
+    background: linear-gradient(135deg, #FFF9C4, #FFEB3B);
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px 0;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    border-left: 4px solid #8B5CF6;
+}
 
-        .cake-container {
-            position: relative;
-            width: 280px;
-            height: 300px;
-            margin: 0 auto;
-        }
+.cake-container {
+    position: relative;
+    width: 280px;
+    height: 300px;
+    margin: 0 auto;
+}
 
-        .cake {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 80px;
-            background: linear-gradient(to bottom, #f8c471, #e67e22);
-            border-radius: 10px 10px 0 0;
-            z-index: 1;
-        }
+.cake {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 80px;
+    background: linear-gradient(to bottom, #f8c471, #e67e22);
+    border-radius: 10px 10px 0 0;
+    z-index: 1;
+}
 
-        .cake-top {
-            position: absolute;
-            bottom: 80px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 220px;
-            height: 30px;
-            background: linear-gradient(to bottom, #ff9ff3, #f368e0);
-            border-radius: 50% 50% 0 0;
-        }
+.cake-top {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 30px;
+    background: linear-gradient(to bottom, #ff9ff3, #f368e0);
+    border-radius: 50% 50% 0 0;
+}
 
-        .candle {
-            position: absolute;
-            bottom: 110px;
-            width: 12px;
-            height: 60px;
-            background: linear-gradient(to bottom, #ffffff, #e74c3c);
-            border-radius: 5px;
-            z-index: 2;
-        }
+.candle {
+    position: absolute;
+    bottom: 110px;
+    width: 12px;
+    height: 60px;
+    background: linear-gradient(to bottom, #ffffff, #e74c3c);
+    border-radius: 5px;
+    z-index: 2;
+    /* LÍNEA AÑADIDA AQUÍ */
+    transform: translateX(-50%);
+}
 
-        .candle:nth-child(1) {
-            left: 25%;
-        }
+.candle:nth-child(1) {
+    left: 25%;
+}
 
-        .candle:nth-child(2) {
-            left: 40%;
-        }
+.candle:nth-child(2) {
+    left: 40%;
+}
 
-        .candle:nth-child(3) {
-            left: 60%;
-        }
+.candle:nth-child(3) {
+    left: 60%;
+}
 
-        .candle:nth-child(4) {
-            left: 75%;
-        }
+.candle:nth-child(4) {
+    left: 75%;
+}
 
-        .flame {
-            position: absolute;
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 15px;
-            height: 25px;
-            background: linear-gradient(to bottom, #ffeb3b, #ff5722);
-            border-radius: 50% 50% 20% 20%;
-            box-shadow: 0 0 10px #ff9800, 0 0 20px #ff5722;
-            animation: flicker 1.5s infinite alternate;
-            z-index: 3;
-            cursor: pointer;
-        }
+.flame {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15px;
+    height: 25px;
+    background: linear-gradient(to bottom, #ffeb3b, #ff5722);
+    border-radius: 50% 50% 20% 20%;
+    box-shadow: 0 0 10px #ff9800, 0 0 20px #ff5722;
+    animation: flicker 1.5s infinite alternate;
+    z-index: 3;
+    cursor: pointer;
+}
 
-        .flame.blown {
-            opacity: 0;
-            transform: translateX(-50%) scale(0.5);
-            transition: all 0.5s ease;
-        }
+.flame.blown {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.5);
+    transition: all 0.5s ease;
+}
 
-        .instructions {
-            margin-top: 20px;
-            font-size: 1.2em;
-            color: #7E57C2;
-            font-weight: bold;
-        }
+.instructions {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #7E57C2;
+    font-weight: bold;
+}
 
-        .wish-message {
-            margin-top: 20px;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 10px;
-            display: none;
-            animation: fadeIn 1s ease;
-        }
+.wish-message {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    display: none;
+    animation: fadeIn 1s ease;
+}
 
         /* Control de música mejorado */
         .music-control {
