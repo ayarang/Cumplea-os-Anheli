@@ -216,112 +216,100 @@
             box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
         }
 
-        /* Estilos para la sección de velas */
-/* ESTO ES LO NUEVO QUE DEBES PEGAR - CSS CORREGIDO */
+        /* MEJORA: Sección de velas corregida */
+        .cake-section {
+            background: linear-gradient(135deg, #FFF9C4, #FFEB3B);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-left: 4px solid #8B5CF6;
+        }
 
-/* Estilos para la sección de velas */
-.cake-section {
-    background: linear-gradient(135deg, #FFF9C4, #FFEB3B);
-    padding: 20px;
-    border-radius: 15px;
-    margin: 20px 0;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    border-left: 4px solid #8B5CF6;
-}
+        .cake-container {
+            position: relative;
+            width: 240px;
+            height: 200px;
+            margin: 0 auto;
+        }
 
-.cake-container {
-    position: relative;
-    width: 280px;
-    height: 300px;
-    margin: 0 auto;
-}
+        .cake {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180px;
+            height: 60px;
+            background: linear-gradient(to bottom, #f8c471, #e67e22);
+            border-radius: 10px 10px 0 0;
+            z-index: 1;
+        }
 
-.cake {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 80px;
-    background: linear-gradient(to bottom, #f8c471, #e67e22);
-    border-radius: 10px 10px 0 0;
-    z-index: 1;
-}
+        .cake-top {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 25px;
+            background: linear-gradient(to bottom, #ff9ff3, #f368e0);
+            border-radius: 50% 50% 0 0;
+        }
 
-.cake-top {
-    position: absolute;
-    bottom: 80px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 220px;
-    height: 30px;
-    background: linear-gradient(to bottom, #ff9ff3, #f368e0);
-    border-radius: 50% 50% 0 0;
-}
+        /* MEJORA: Velas más juntas y mejor organizadas */
+        .candles-container {
+            position: absolute;
+            bottom: 85px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px; /* Reducido para que estén más juntas */
+            z-index: 2;
+        }
 
-.candle {
-    position: absolute;
-    bottom: 110px;
-    width: 12px;
-    height: 60px;
-    background: linear-gradient(to bottom, #ffffff, #e74c3c);
-    border-radius: 5px;
-    z-index: 2;
-    transform: translateX(-50%);
-}
+        .candle {
+            position: relative;
+            width: 10px;
+            height: 50px;
+            background: linear-gradient(to bottom, #ffffff, #e74c3c);
+            border-radius: 4px;
+        }
 
-.candle:nth-child(1) {
-    left: 25%;
-}
+        .flame {
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 20px;
+            background: linear-gradient(to bottom, #ffeb3b, #ff5722);
+            border-radius: 50% 50% 20% 20%;
+            box-shadow: 0 0 8px #ff9800, 0 0 15px #ff5722;
+            animation: flicker 1.5s infinite alternate;
+            cursor: pointer;
+        }
 
-.candle:nth-child(2) {
-    left: 40%;
-}
+        .flame.blown {
+            opacity: 0;
+            transform: translateX(-50%) scale(0.5);
+            transition: all 0.5s ease;
+        }
 
-.candle:nth-child(3) {
-    left: 60%;
-}
+        .instructions {
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #7E57C2;
+            font-weight: bold;
+        }
 
-.candle:nth-child(4) {
-    left: 75%;
-}
-
-.flame {
-    position: absolute;
-    top: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 15px;
-    height: 25px;
-    background: linear-gradient(to bottom, #ffeb3b, #ff5722);
-    border-radius: 50% 50% 20% 20%;
-    box-shadow: 0 0 10px #ff9800, 0 0 20px #ff5722;
-    animation: flicker 1.5s infinite alternate;
-    z-index: 3;
-    cursor: pointer;
-}
-
-.flame.blown {
-    opacity: 0;
-    transform: translateX(-50%) scale(0.5);
-    transition: all 0.5s ease;
-}
-
-.instructions {
-    margin-top: 20px;
-    font-size: 1.2em;
-    color: #7E57C2;
-    font-weight: bold;
-}
-
-.wish-message {
-    margin-top: 20px;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: 10px;
-    display: none;
-    animation: fadeIn 1s ease;
-}
+        .wish-message {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            display: none;
+            animation: fadeIn 1s ease;
+        }
 
         /* Control de música mejorado */
         .music-control {
@@ -464,22 +452,22 @@
 
         <!-- SECCIÓN MENSAJE ESPECIAL -->
         <div id="message" class="hidden message">
-    <h3 style="color: #7E57C2; margin-bottom: 15px; font-size: 1.3em; text-align: center;">💜 My Queen Anheli 💜</h3>
-    <div style="text-align: center; line-height: 1.6; font-size: 1em; color: #374151;">
-        <p style="text-align: center;">✨ Eres increíblemente valiosa para mí. Atesoro cada momento que estamos juntos. ✨</p>
-        <p style="text-align: center;">🌙 Eres la luz en la oscuridad que guia mis pasos. 🌙</p>
-        <p style="text-align: center;">🎀 Mereces todo lo bueno y maravilloso que la vida pueda ofrecer. 🎀</p>
-        <p style="text-align: center;">⭐ la visa continua a pesar de todas las cosas. ⭐</p>
-        <p style="text-align: center;">⭐ Dios siempre manda a sus mejores guerreras al campo de batalla. ⭐</p>
-        <p style="text-align: center;">💜 Te Quiero My Queen Anheli 💜</p>
-    </div>
-    <div style="margin: 20px 0; font-size: 1.3em; text-align: center;">
-        💜 🌷 💜
-    </div>
-    <p style="text-align: center; font-size: 1.2em; margin-top: 15px;">
-        🎆 FELIZ CUMPLEAÑOS 🎇
-    </p>
-</div>
+            <h3 style="color: #7E57C2; margin-bottom: 15px; font-size: 1.3em; text-align: center;">💜 My Queen Anheli 💜</h3>
+            <div style="text-align: center; line-height: 1.6; font-size: 1em; color: #374151;">
+                <p style="text-align: center;">✨ Eres increíblemente valiosa para mí. Atesoro cada momento que estamos juntos. ✨</p>
+                <p style="text-align: center;">🌙 Eres la luz en la oscuridad que guia mis pasos. 🌙</p>
+                <p style="text-align: center;">🎀 Mereces todo lo bueno y maravilloso que la vida pueda ofrecer. 🎀</p>
+                <p style="text-align: center;">⭐ la visa continua a pesar de todas las cosas. ⭐</p>
+                <p style="text-align: center;">⭐ Dios siempre manda a sus mejores guerreras al campo de batalla. ⭐</p>
+                <p style="text-align: center;">💜 Te Quiero My Queen Anheli 💜</p>
+            </div>
+            <div style="margin: 20px 0; font-size: 1.3em; text-align: center;">
+                💜 🌷 💜
+            </div>
+            <p style="text-align: center; font-size: 1.2em; margin-top: 15px;">
+                🎆 FELIZ CUMPLEAÑOS 🎇
+            </p>
+        </div>
 
         <!-- SECCIÓN GALERÍA -->
         <div id="photos" class="hidden message">
@@ -530,11 +518,12 @@
                 <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
                     <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
                         cuando por primera vez escuché tu voz te quería conocer, es que hablamas muy diferente a los demas, la forma como hablabas y el tono de tu voz, eran unicos siempre desde te quise conocer, pero no sabia como acercarme. te recuerdas cuando el profesor de Desempeño, dijo ruleta, yo estaba diciendo en mi mente que me toque con ella, y fui asi, cuando estuviste en mi grupo dije: soy un crack siempre consigo lo que quiero, y estaba feliz. pero eso fue el primer paso, siempre te quise hablar en el salon pero siempre estabas con Henrik y no podia, pero no se como asi me empesate hablar, creo que no podias acceder a tu portal, Gracias al curso de desempeño, hemos sido algo más cercanos. Pero lo que más recuerdo fue cuando en el colectivo nos encontramos y te di una palmada en tu frente, ahi estaba rebosando de alegria, dando palmadita era mi forma de querer. Que coinsidencia cuando ese dia justo el dia de tus cumpleaños nos hemos sentado juntos y estabamos hablando ese dia para mi fue chevere por que pube socializar contigo, cuando me dijiste que era tu cumpleaños yo pense que me estaba bromeando, creo que desde ese dia hemos empezado con los chismis. 
+                    </p>
                 </div>
                 <button class="btn back-btn" onclick="backToMemories()">← Volver a Recuerdos</button>
             </div>
 
-                        <div id="memory2" class="memory-detail hidden">
+            <div id="memory2" class="memory-detail hidden">
                 <h4 style="color: #5E35B1; font-size: 1.1em;">🍳 cuando cocine para ti</h4>
                 <div style="background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 10px; margin: 15px 0;">
                     <p style="line-height: 1.6; color: #374151; font-size: 0.95em; text-align: left;">
@@ -628,43 +617,43 @@
             </div>
         </div>
 
-
-        </div>
-
-        
-        <!-- SECCIÓN VELAS INTERACTIVAS -->
-<div id="cake" class="hidden cake-section">
-    <h3 style="color: #7E57C2; margin-bottom: 15px; font-size: 1.3em; text-align: center;">🎂 ¡Sopla las Velas! 🕯️</h3>
-    <p style="color: #6B7280; margin-bottom: 15px; font-size: 0.95em; text-align: center;">Toca cada vela para apagarla y pedir tu deseo</p>
-    
-    <div class="cake-container" style="margin: 0 auto;">
-        <div class="cake-top"></div>
-        <div class="cake"></div>
-        
-        <div class="candle">
-            <div class="flame" id="flame1"></div>
-        </div>
-        <div class="candle">
-            <div class="flame" id="flame2"></div>
-        </div>
-        <div class="candle">
-            <div class="flame" id="flame3"></div>
-        </div>
-        <div class="candle">
-            <div class="flame" id="flame4"></div>
+        <!-- SECCIÓN VELAS INTERACTIVAS MEJORADA -->
+        <div id="cake" class="hidden cake-section">
+            <h3 style="color: #7E57C2; margin-bottom: 15px; font-size: 1.3em; text-align: center;">🎂 ¡Sopla las Velas! 🕯️</h3>
+            <p style="color: #6B7280; margin-bottom: 15px; font-size: 0.95em; text-align: center;">Toca cada vela para apagarla y pedir tu deseo</p>
+            
+            <div class="cake-container">
+                <div class="cake-top"></div>
+                <div class="cake"></div>
+                
+                <!-- MEJORA: Velas más juntas y organizadas -->
+                <div class="candles-container">
+                    <div class="candle">
+                        <div class="flame" id="flame1"></div>
+                    </div>
+                    <div class="candle">
+                        <div class="flame" id="flame2"></div>
+                    </div>
+                    <div class="candle">
+                        <div class="flame" id="flame3"></div>
+                    </div>
+                    <div class="candle">
+                        <div class="flame" id="flame4"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="instructions" id="instructions" style="text-align: center;">
+                👆 Toca cada vela para apagarla
+            </div>
+            
+            <div class="wish-message" id="wishMessage" style="text-align: center;">
+                <h3 style="color: #7E57C2; margin-bottom: 10px;">✨ ¡Tu deseo se hará realidad! ✨</h3>
+                <p>Que este nuevo año de vida esté lleno de alegría, amor y momentos inolvidables. 💖</p>
+                <div style="margin-top: 15px; font-size: 1.5em;">🎉 🎂 🎁</div>
+            </div>
         </div>
     </div>
-    
-    <div class="instructions" id="instructions" style="text-align: center;">
-        👆 Toca la pantalla para soplar las velas
-    </div>
-    
-    <div class="wish-message" id="wishMessage" style="text-align: center;">
-        <h3 style="color: #7E57C2; margin-bottom: 10px;">✨ ¡Tu deseo se hará realidad! ✨</h3>
-        <p>Que este nuevo año de vida esté lleno de alegría, amor y momentos inolvidables. 💖</p>
-        <div style="margin-top: 15px; font-size: 1.5em;">🎉 🎂 🎁</div>
-    </div>
-</div>
 
     <!-- Audio para la música de fondo -->
     <audio id="backgroundMusic" loop preload="auto">
@@ -827,7 +816,7 @@
                 }
             });
 
-            // Configurar velas
+            // Configurar velas - MEJORA: Solo se apagan al hacer clic en las llamas
             for (let i = 1; i <= totalCandles; i++) {
                 const flame = document.getElementById(`flame${i}`);
                 flame.addEventListener('click', function() {
@@ -844,26 +833,6 @@
                     }
                 });
             }
-            
-            document.getElementById('cake').addEventListener('click', function(event) {
-                if (!event.target.classList.contains('flame')) {
-                    for (let i = 1; i <= totalCandles; i++) {
-                        const flame = document.getElementById(`flame${i}`);
-                        if (!flame.classList.contains('blown')) {
-                            flame.classList.add('blown');
-                            candlesBlown++;
-                            
-                            if (candlesBlown === totalCandles) {
-                                setTimeout(function() {
-                                    document.getElementById('instructions').style.display = 'none';
-                                    document.getElementById('wishMessage').style.display = 'block';
-                                }, 800);
-                            }
-                            break;
-                        }
-                    }
-                }
-            });
         });
 
         // Manejar errores de audio
